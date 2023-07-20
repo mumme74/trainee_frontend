@@ -1,19 +1,20 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 import { withAuthGuardSuperAdmin } from "../HOCs/authGuards";
 import SuperAdminDashboard from "./SuperAdminDashboard";
 
 function SuperAdminIndex() {
   return (
-    <Switch>
+    <Routes>
       <Route
-        path="/superadmin/dashboard"
-        component={SuperAdminDashboard}
-        exact
-      />
-      <Route path="/superadmin/*" component={SuperAdminDashboard} />
-    </Switch>
+        path="/superadmin/dashboard">
+        <SuperAdminDashboard />
+      </Route>
+      <Route path="/superadmin/*">
+        <SuperAdminIndex />
+      </Route>
+    </Routes>
   );
 }
 

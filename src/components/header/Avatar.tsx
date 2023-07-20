@@ -11,7 +11,7 @@ type JsxProps = {
   onClick?: () => void;
 };
 
-const Avatar: React.FC<JsxProps> = (props) => {
+const Avatar: React.FC<React.PropsWithChildren<JsxProps>> = (props) => {
   const [showMenu, setShowMenu] = useState(false);
   const menuNode = useRef<HTMLDivElement>(null);
   const avatarImgNode = useRef<HTMLImageElement>(null);

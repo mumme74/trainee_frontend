@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { RouteComponentProps } from "react-router";
 import { Form, Field } from "react-final-form";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
 
@@ -18,11 +17,11 @@ type DeleteForm = {
   password: string;
 };
 
-type StatePropsT = {};
+type StatePropsT = object;
 
-type JsxPropsT = {};
+type JsxPropsT = object;
 
-const DeleteMe: React.FC<StatePropsT & JsxPropsT & RouteComponentProps> = (
+const DeleteMe: React.FC<StatePropsT & JsxPropsT> = (
   props,
 ) => {
   const { t } = useTranslation("core");
@@ -35,10 +34,10 @@ const DeleteMe: React.FC<StatePropsT & JsxPropsT & RouteComponentProps> = (
   const [stage, setStage] = useState(0);
   const [error, setError] = useState("");
 
-  const history = useHistory();
+  const navigate = useNavigate();
 
   function cancelHandler() {
-    history.push("/student/profile");
+    navigate("/student/profile");
   }
 
   function okHandler() {
@@ -80,12 +79,11 @@ const DeleteMe: React.FC<StatePropsT & JsxPropsT & RouteComponentProps> = (
     </div>
   );
 
-  const nav = Stages.map((pos) => {
-    const idx = Stages.indexOf(pos);
+  const nav = Stages.map((pos, idx) => {
     const btnCss = "btn btn-link nav-item";
     if (idx <= stage) {
       return (
-        <span className="col-sm">
+        <span className="col-sm" key={idx}>
           {idx > 0 && "/"}
           <button
             className={btnCss + (idx === stage ? " bold" : "")}
@@ -100,7 +98,7 @@ const DeleteMe: React.FC<StatePropsT & JsxPropsT & RouteComponentProps> = (
       );
     }
     return (
-      <span className="col-sm">
+      <span className="col-sm" key={idx}>
         /
         <button className={btnCss} disabled={true}>
           {pos}
@@ -195,7 +193,7 @@ const DeleteMe: React.FC<StatePropsT & JsxPropsT & RouteComponentProps> = (
         <div className="row-sm-4 bg-warning">{nav}</div>
         <button
           onClick={() => {
-            props.history.push("/");
+            navigate("/");
           }}
           className="btn btn-link"
         >

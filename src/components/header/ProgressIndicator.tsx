@@ -1,13 +1,13 @@
 import React from "react";
 import "./ProgressIndicator.css";
 
-type StatePropsT = {};
+type StatePropsT = object;
 
 type JsxPropsT = {
   progress?: number; // between 0 and 1
 };
 
-const ProgressIndicator: React.FC<JsxPropsT & StatePropsT> = (props) => {
+const ProgressIndicator: React.FC<React.PropsWithChildren<JsxPropsT & StatePropsT>> = (props) => {
   const progress = Math.round((props.progress || 0) * 100) / 100; // 2 decimals
   let rotateClass = "",
     tooltip = "";

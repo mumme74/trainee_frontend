@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 
 import Logo from "./header/Logo";
 
-const About: React.FC<JSX.ElementAttributesProperty> = (props) => {
+const About: React.FC<any> = (props) => {
   const { t } = useTranslation("core");
 
   return (
@@ -24,7 +24,7 @@ const About: React.FC<JSX.ElementAttributesProperty> = (props) => {
       <p>
         Permission is hereby granted, free of charge, to any person obtaining a
         copy of this software and associated documentation files (the
-        "Software"), to deal in the Software without restriction, including
+        &qout;Software&quot;), to deal in the Software without restriction, including
         without limitation the rights to use, copy, modify, merge, publish,
         distribute, sublicense, and/or sell copies of the Software, and to
         permit persons to whom the Software is furnished to do so, subject to
@@ -35,7 +35,7 @@ const About: React.FC<JSX.ElementAttributesProperty> = (props) => {
         in all copies or substantial portions of the Software.
       </p>
       <p>
-        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+        THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS
         OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
         MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
         IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY

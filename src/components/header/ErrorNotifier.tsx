@@ -14,14 +14,14 @@ type StatePropsT = {
   errors: [IError?];
 };
 
-type JsxPropsT = {};
+type JsxPropsT = object;
 
 interface IElement extends Element {
   readonly offsetLeft: number;
   readonly offsetTop: number;
 }
 
-const ErrorNotifier: React.FC<StatePropsT & JsxPropsT> = (props) => {
+const ErrorNotifier: React.FC<React.PropsWithChildren<StatePropsT & JsxPropsT>> = (props) => {
   const menuNodeRef = useRef<HTMLDivElement>(null);
   const errorCircle = useRef<HTMLDivElement>(null);
 
@@ -69,9 +69,9 @@ const ErrorNotifier: React.FC<StatePropsT & JsxPropsT> = (props) => {
       >
         <React.Fragment>
           <ul>
-            {props.errors.map((err) => {
+            {props.errors.map((err,i) => {
               return (
-                <li className="dropdown-item">{err?.message || err?.type}</li>
+                <li className="dropdown-item" key={i}>{err?.message || err?.type}</li>
               );
             })}
           </ul>

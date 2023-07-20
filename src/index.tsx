@@ -1,7 +1,7 @@
 // non project imports
 import React from "react";
-import ReactDOM from "react-dom";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { createRoot } from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 
 // non components
@@ -26,29 +26,53 @@ import DeleteMe from "./components/login/DeleteMe";
 const store = initStore();
 initAxios();
 
-ReactDOM.render(
+const container = document.getElementById('root')!;
+const root = createRoot(container);
+
+root.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
         <React.Suspense fallback="Ĺoading...">
           <App>
-            <Switch>
-              <Route path="/dashboard" component={Dashboard} exact />
-              <Route path="/signup" component={SignUp} exact />
-              <Route path="/login" component={Login} exact />
-              <Route path="/unauthorized" component={Unauthorized} exact />
-              <Route path="/student" component={Student} />
-              <Route path="/teacher" component={Teacher} />
-              <Route path="/admin" component={Admin} />
-              <Route path="/superadmin" component={SuperAdmin} />
-              <Route path="/deleteme" component={DeleteMe} />
-              <Route path="/about" component={About} exact />
-              <Route path="/*" component={Home} />
-            </Switch>
+            <Routes>
+              <Route path="/dashboard">
+                <Dashboard />
+              </Route>
+              <Route path="/signup" >
+                <SignUp />
+              </Route>
+              <Route path="/login">
+                <Login />
+              </Route>
+              <Route path="/unauthorized">
+                <Unauthorized />
+              </Route>
+              <Route path="/student">
+                <Student />
+              </Route>
+              <Route path="/teacher">
+                <Teacher />
+              </Route>
+              <Route path="/admin">
+                <Admin />
+              </Route>
+              <Route path="/superadmin">
+                <SuperAdmin />
+              </Route>
+              <Route path="/deleteme">
+                <DeleteMe />
+              </Route>
+              <Route path="/about">
+                <About />
+              </Route>
+              <Route path="/*">
+                <Home />
+              </Route>
+            </Routes>
           </App>
         </React.Suspense>
       </BrowserRouter>
     </Provider>
-  </React.StrictMode>,
-  document.getElementById("root"),
+  </React.StrictMode>
 );

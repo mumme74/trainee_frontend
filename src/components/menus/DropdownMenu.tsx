@@ -14,7 +14,7 @@ type JsxPropsT = {
   className?: string;
   show: boolean;
   caption?: string;
-  onClose?: Function;
+  onClose?: ()=>void;
   children?: React.ReactNode;
   closeOnClick?: boolean;
 };
@@ -84,5 +84,7 @@ const DropdownMenu = forwardRef<HTMLDivElement, JsxPropsT>((props, ref) => {
     </div>
   );
 });
+
+DropdownMenu.displayName = "DropdowMenu";
 
 export default DropdownMenu;

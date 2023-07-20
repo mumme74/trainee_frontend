@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Form, Field } from "react-final-form";
 import { connect } from "react-redux";
 import { compose } from "redux";
-import { History } from "history";
 import { useTranslation } from "react-i18next";
 
 import FormRow from "../form/FormRow";
@@ -21,7 +20,6 @@ type StatePropsT = {
 
 type ActionPropsT = {
   login: (data: ILoginData) => void;
-  history: History;
 };
 
 const Login: React.FC<StatePropsT & ActionPropsT> = (props) => {
@@ -40,9 +38,10 @@ const Login: React.FC<StatePropsT & ActionPropsT> = (props) => {
 
   useEffect(() => {
     if (props.isAuthenticated) {
-      props.history.push("/dashboard");
+      const navigate = useNavigate();
+      navigate("/dashboard");
     }
-  }, [props.isAuthenticated, props.history]);
+  }, [props.isAuthenticated]);
 
   return (
     <React.Fragment>
@@ -59,7 +58,7 @@ const Login: React.FC<StatePropsT & ActionPropsT> = (props) => {
         <Form
           onSubmit={onSubmit}
           validate={(values) => {
-            let errObj: { login?: string } = {};
+            const errObj: { login?: string } = {};
             if (values.login?.length < 3) {
               if (values.login.indexOf("@") > -1) {
                 errObj.login = val.userName(values.login);

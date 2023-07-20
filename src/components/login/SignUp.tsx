@@ -3,7 +3,6 @@ import { Form, Field } from "react-final-form";
 import { useTranslation } from "react-i18next";
 import { connect } from "react-redux";
 import { compose } from "redux";
-import { History } from "history";
 
 import FormRow from "../form/FormRow";
 import val from "../form/validators";
@@ -11,6 +10,7 @@ import * as actions from "../../redux/actions";
 import OAuthLogin from "./OAuthLogin";
 import { RootState } from "../../redux/store";
 import { IAuth, ISignUpNewUserForm } from "../../redux/actions/types";
+import { useNavigate } from "react-router-dom";
 
 type StatePropsT = {
   isAuthenticated: boolean;
@@ -19,7 +19,6 @@ type StatePropsT = {
 
 type ActionPropsT = {
   signUp: (data: ISignUpNewUserForm) => void;
-  history: History;
 };
 
 interface IFormData extends ISignUpNewUserForm {
@@ -43,9 +42,10 @@ function SignUp(props: StatePropsT & ActionPropsT) {
 
   useEffect(() => {
     if (props.isAuthenticated) {
-      props.history.push("/dashboard");
+      const navigate = useNavigate();
+      navigate("/dashboard");
     }
-  }, [props.isAuthenticated, props.history]);
+  }, [props.isAuthenticated]);
 
   return (
     <React.Fragment>

@@ -5,8 +5,8 @@
  * @returns the true offsetLeft
  */
 export function getElementLeft(element: HTMLElement) {
-  var actualLeft = element.offsetLeft;
-  var current = element.offsetParent as HTMLElement;
+  let actualLeft = element.offsetLeft;
+  let current = element.offsetParent as HTMLElement;
 
   while (current !== null) {
     actualLeft += current.offsetLeft!;
@@ -22,8 +22,8 @@ export function getElementLeft(element: HTMLElement) {
  * @returns the true offsettop
  */
 export function getElementTop(element: HTMLElement) {
-  var actualLeft = element.offsetTop;
-  var current = element.offsetParent as HTMLElement;
+  let actualLeft = element.offsetTop;
+  let current = element.offsetParent as HTMLElement;
 
   while (current !== null) {
     actualLeft += current.offsetTop!;

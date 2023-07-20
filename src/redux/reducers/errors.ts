@@ -22,7 +22,7 @@ const DEFAULT_STATE: StateT = {
 
 export function errorReducer(state = DEFAULT_STATE, action: AnyAction) {
   switch (action.type) {
-    case ERROR_COMMUNICATION:
+    case ERROR_COMMUNICATION: {
       const payload = action.payload as IError;
       payload.type = action.type;
       const ret = <StateT>{
@@ -30,6 +30,7 @@ export function errorReducer(state = DEFAULT_STATE, action: AnyAction) {
       };
       ret.errors.push(payload);
       return ret;
+    }
     case ERROR_CLEAR_ALL:
       return <StateT>{
         ...state,

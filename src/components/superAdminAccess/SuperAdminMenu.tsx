@@ -6,7 +6,7 @@ import {
   withAuthGuardSuperAdmin,
 } from "../HOCs/authGuards";
 
-type StatePropsT = {};
+type StatePropsT = object;
 
 type JsxPropsT = {
   closeHandler: () => void;

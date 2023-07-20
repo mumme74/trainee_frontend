@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import { Dropdown } from "react-bootstrap";
 import i18next from "i18next";
 
-import "flag-icon-css/css/flag-icon.min.css";
+import "flag-icons/css/flag-icons.min.css";
 
 import * as actions from "../../redux/actions";
 import { RootState } from "../../redux/store";

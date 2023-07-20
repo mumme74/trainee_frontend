@@ -1,6 +1,6 @@
 // i18next-parser.config.js
 
-module.exports = {
+module.exports = { // eslint-disable-line no-undef
   //contextSeparator: "_",
   // Key separator used in your translation keys
 
@@ -56,13 +56,11 @@ module.exports = {
   // Supports JSON (.json) and YAML (.yml) file formats
   // Where to write the locale files relative to process.cwd()
 
-  input: "src/**/*.{js,ts,tsx}",
-
   pluralSeparator: "_",
   // Plural separator used in your translation keys
   // If you want to use plain english keys, separators such as `_` might conflict. You might want to set `pluralSeparator` to a different string that does not occur in your keys.
 
-  input: undefined,
+  input: "src/**/*.{js,ts,tsx}",
   // An array of globs that describe where to look for source files
   // relative to the location of the configuration file
 

@@ -1,11 +1,11 @@
 import React from "react";
 import { Form, Field } from "react-final-form";
 
-type StatePropsT = {};
+type StatePropsT = object;
 
-type ActionPropsT = {};
+type ActionPropsT = object;
 
-type JsxPropsT = {};
+type JsxPropsT = object;
 
 const AdminUsers: React.FC<StatePropsT & ActionPropsT & JsxPropsT> = (
   props,
@@ -36,7 +36,7 @@ const AdminUsers: React.FC<StatePropsT & ActionPropsT & JsxPropsT> = (
             <div className="accordion-body">
               Placeholder content for this accordion, which is intended to
               demonstrate the <code>.accordion-flush</code> class. This is the
-              first item's accordion body.
+              first item&apos;s accordion body.
             </div>
           </div>
         </div>
@@ -62,7 +62,7 @@ const AdminUsers: React.FC<StatePropsT & ActionPropsT & JsxPropsT> = (
             <div className="accordion-body">
               Placeholder content for this accordion, which is intended to
               demonstrate the <code>.accordion-flush</code> class. This is the
-              second item's accordion body. Let's imagine this being filled with
+              second item&apos;s accordion body. Let&apos;s imagine this being filled with
               some actual content.
             </div>
           </div>

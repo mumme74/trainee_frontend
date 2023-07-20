@@ -32,7 +32,7 @@ function mapDispatchToProps(dispatch: AppDispatch): ActionPropsT {
   };
 }
 
-const Header: React.FC<StatePropsT & ActionPropsT> = (props) => {
+const Header: React.FC<React.PropsWithChildren<StatePropsT & ActionPropsT>> = (props) => {
   const { t } = useTranslation("core");
 
   return (

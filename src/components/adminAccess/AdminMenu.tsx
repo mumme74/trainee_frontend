@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { withAuthGuardAdmin, withAuthGuardStudent } from "../HOCs/authGuards";
 
-type StatePropsT = {};
+type StatePropsT = object;
 
 type JsxPropsT = {
   closeHandler: () => void;

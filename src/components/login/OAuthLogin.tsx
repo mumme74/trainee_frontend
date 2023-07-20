@@ -1,5 +1,5 @@
 import React from "react";
-import GoogleLogin from "react-google-login";
+import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
 import { useTranslation } from "react-i18next";
 import { connect } from "react-redux";
 import { compose } from "redux";
@@ -27,6 +27,10 @@ function OAuthLogin(props: StatePropsT & ActionPropsT) {
     await props.oAuthGoogle(res);
   };
 
+  const errorHappened = () => {
+    console.log('Error logging in');
+  }
+
   return (
     <div className="container border-bottom mb-5">
       <div className="row">
@@ -37,13 +41,15 @@ function OAuthLogin(props: StatePropsT & ActionPropsT) {
         <div className="col-sm-2">
           <span className=" badge bg-danger">{props.error.message}</span>
         </div>
-        <GoogleLogin
-          clientId={GOOGLE_CLIENT_ID}
-          buttonText="Google"
-          onSuccess={responseGoogle}
-          onFailure={responseGoogle}
-          className="btn btn-outline-danger col-sm-2"
-        />
+        <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
+          <GoogleLogin
+            onSuccess={credentialResponse=>responseGoogle(credentialResponse)}
+            onError={errorHappened}
+            //className="btn btn-outline-danger col-sm-2"
+            auto_select
+            useOneTap
+          />
+        </GoogleOAuthProvider>
       </div>
     </div>
   );

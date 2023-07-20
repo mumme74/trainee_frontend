@@ -40,15 +40,16 @@ function errorHandler(dispatch: AppDispatch, err: ErrT) {
     const response = axiosErr.response;
 
     if (response.data) {
+      const data: any = response.data;
       console.warn(
         "error response from server",
-        response.data?.error || response.data || response,
+        data.error || data || response,
       );
 
-      message = Array.isArray(response.data?.details)
-        ? response.data?.details[0]
-        : response.data?.error
-        ? response.data?.error?.message || response?.data?.error
+      message = Array.isArray(data?.details)
+        ? data?.details[0]
+        : data?.error
+        ? data?.error?.message || data?.error
         : `${response.status} ${response.data}`;
     } else {
       message = axiosErr.message;

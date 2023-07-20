@@ -21,14 +21,15 @@ const DEFAULT_STATE: IUser = {
 
 export default function userReducer(state = DEFAULT_STATE, action: AnyAction) {
   switch (action.type) {
-    case USER_INFO_SET:
-      let st: IUser = { ...state };
+    case USER_INFO_SET: {
+      const st: IUser = { ...state };
       type K = keyof IUser;
       for (const key in action.payload as IUser) {
-        if (action.payload.hasOwnProperty(key))
+        if (Object.prototype.hasOwnProperty.call(action.payload, key))
           st[key as K] = action.payload[key];
       }
       return st;
+    }
     case USER_INFO_CLEARED:
       return {
         ...DEFAULT_STATE,
