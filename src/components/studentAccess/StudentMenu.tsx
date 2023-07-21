@@ -13,6 +13,7 @@ type JsxPropsT = {
 const StudentMenu: React.FC<StatePropsT & JsxPropsT> = (props) => {
   const { t } = useTranslation("core");
   return (
+    <React.Fragment>
     <div className="container" onClick={props.closeHandler}>
       <h4>{t("student_menu_header")}:</h4>
       <ul className="list-group">
@@ -28,6 +29,7 @@ const StudentMenu: React.FC<StatePropsT & JsxPropsT> = (props) => {
         </li>
       </ul>
     </div>
+    </React.Fragment>
   );
 };
 

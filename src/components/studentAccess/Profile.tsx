@@ -39,6 +39,7 @@ const Profile: React.FC<StatePropsT & ActionPropsT> = (props) => {
   }
 
   return (
+    <React.Fragment>
     <div>
       {locked && (
         <div className="alert alert-warning" role="alert">
@@ -175,6 +176,7 @@ const Profile: React.FC<StatePropsT & ActionPropsT> = (props) => {
         </Form>
       )}
     </div>
+    </React.Fragment>
   );
 };
 

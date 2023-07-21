@@ -47,6 +47,7 @@ const ErrorNotifier: React.FC<React.PropsWithChildren<StatePropsT & JsxPropsT>> 
   }
 
   return (
+    <React.Fragment>
     <div onClick={stopClick}>
       {props.children}
       {props.errors.length > 0 && (
@@ -84,6 +85,7 @@ const ErrorNotifier: React.FC<React.PropsWithChildren<StatePropsT & JsxPropsT>> 
         </React.Fragment>
       </DropdownMenu>
     </div>
+    </React.Fragment>
   );
 };
 

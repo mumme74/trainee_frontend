@@ -68,6 +68,7 @@ function User(props: StateProps & JsxProps) {
   );
 
   return (
+    <React.Fragment>
     <ul className="nav navbar-nav ml-auto mx-2">
       {!props.isAuthenticated ? (
         <React.Fragment>
@@ -122,6 +123,7 @@ function User(props: StateProps & JsxProps) {
         </React.Fragment>
       )}
     </ul>
+    </React.Fragment>
   );
 }
 

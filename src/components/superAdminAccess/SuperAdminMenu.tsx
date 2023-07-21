@@ -14,6 +14,7 @@ type JsxPropsT = {
 
 const SuperAdminMenu: React.FC<StatePropsT & JsxPropsT> = (props) => {
   return (
+    <React.Fragment>
     <div className="container" onClick={props.closeHandler}>
       <h4>Super Admin menu:</h4>
       <ul className="list-group">
@@ -22,6 +23,7 @@ const SuperAdminMenu: React.FC<StatePropsT & JsxPropsT> = (props) => {
         </li>
       </ul>
     </div>
+    </React.Fragment>
   );
 };
 

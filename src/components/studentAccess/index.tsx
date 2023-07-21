@@ -8,15 +8,9 @@ import Profile from "./Profile";
 function StudentIndex() {
   return (
     <Routes>
-      <Route path="/student/dashboard">
-        <StudentDashboard />
-      </Route>
-      <Route path="/student/profile">
-        <Profile />
-      </Route>
-      <Route path="/student/*">
-        <StudentDashboard />
-      </Route>
+      <Route path="/student/dashboard" element={<StudentDashboard />}/>
+      <Route path="/student/profile" element={<Profile />} />
+      <Route path="/student/*" element={<StudentDashboard />} />
     </Routes>
   );
 }

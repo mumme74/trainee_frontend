@@ -25,7 +25,7 @@ const Dashboard: React.FC<StatePropsT & ActionPropsT> = (props) => {
   }, [props.getSecret, props.isAuthenticated]);
 
   return (
-    <div>
+    <React.Fragment>
       <h1>{t("dashroot_header")}</h1>
       {props.secret && (
         <React.Fragment>
@@ -34,7 +34,7 @@ const Dashboard: React.FC<StatePropsT & ActionPropsT> = (props) => {
         </React.Fragment>
       )}
       <Link to="/profile">{t("dashroot_profile_page")}</Link>
-    </div>
+    </React.Fragment>
   );
 };
 

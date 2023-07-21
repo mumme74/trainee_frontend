@@ -11,6 +11,7 @@ type JsxPropsT = {
 
 const TeacherMenu: React.FC<StatePropsT & JsxPropsT> = (props) => {
   return (
+    <React.Fragment>
     <div className="container" onClick={props.closeHandler}>
       <h4>Teacher menu:</h4>
       <ul className="list-group">
@@ -19,6 +20,7 @@ const TeacherMenu: React.FC<StatePropsT & JsxPropsT> = (props) => {
         </li>
       </ul>
     </div>
+    </React.Fragment>
   );
 };
 

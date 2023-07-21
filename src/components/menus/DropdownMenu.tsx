@@ -66,22 +66,24 @@ const DropdownMenu = forwardRef<HTMLDivElement, JsxPropsT>((props, ref) => {
   });
 
   return (
-    <div
-      className={
-        "dropdown-menu " +
-        css.menu +
-        " " +
-        props.className +
-        (showMenu ? " show" : "")
-      }
-      ref={mergeRefs(ref, menuNodeRef)}
-    >
-      <header>
-        <span>{props.caption}</span>
-        <button className="btn-close btn shadow-none" onClick={closeHandler} />
-      </header>
-      <div onClick={closeHandler}>{props.children}</div>
-    </div>
+    <React.Fragment>
+      <div
+        className={
+          "dropdown-menu " +
+          css.menu +
+          " " +
+          props.className +
+          (showMenu ? " show" : "")
+        }
+        ref={mergeRefs(ref, menuNodeRef)}
+      >
+        <header>
+          <span>{props.caption}</span>
+          <button className="btn-close btn shadow-none" onClick={closeHandler} />
+        </header>
+        <div onClick={closeHandler}>{props.children}</div>
+      </div>
+    </React.Fragment>
   );
 });
 

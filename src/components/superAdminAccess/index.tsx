@@ -8,12 +8,10 @@ function SuperAdminIndex() {
   return (
     <Routes>
       <Route
-        path="/superadmin/dashboard">
-        <SuperAdminDashboard />
-      </Route>
-      <Route path="/superadmin/*">
-        <SuperAdminIndex />
-      </Route>
+        path="/superadmin/dashboard"
+        element={<SuperAdminDashboard />} />
+      <Route path="/superadmin/*"
+        element={<SuperAdminIndex />} />
     </Routes>
   );
 }

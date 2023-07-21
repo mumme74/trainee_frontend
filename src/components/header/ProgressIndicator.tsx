@@ -18,9 +18,11 @@ const ProgressIndicator: React.FC<React.PropsWithChildren<JsxPropsT & StateProps
   }
 
   return (
+    <React.Fragment>
     <div className={"progressIndicatorWrapper" + rotateClass} title={tooltip}>
       {props.children}
     </div>
+    </React.Fragment>
   );
 };
 

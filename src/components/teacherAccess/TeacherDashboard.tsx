@@ -4,6 +4,7 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 
 export default function TeacherDashboard() {
   return (
+    <React.Fragment>
     <div className="container">
       <h1>Teacher Dashboard</h1>
       <div className="row">
@@ -23,5 +24,6 @@ export default function TeacherDashboard() {
         </div>
       </div>
     </div>
+    </React.Fragment>
   );
 }

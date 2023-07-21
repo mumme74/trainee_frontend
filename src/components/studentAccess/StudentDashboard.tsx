@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 export default function StudentDashboard() {
   const { t } = useTranslation("core");
   return (
+    <React.Fragment>
     <div className="container">
       <h1>{t("student_dashboard")}</h1>
       <div className="row">
@@ -25,5 +26,6 @@ export default function StudentDashboard() {
         </div>
       </div>
     </div>
+    </React.Fragment>
   );
 }

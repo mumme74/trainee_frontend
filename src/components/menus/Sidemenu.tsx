@@ -65,22 +65,25 @@ const Sidemenu: React.FC<
         return <SuperAdminMenu closeHandler={close} />;
       default:
         return (
-          <div className="container p-2">
-            <h4>{t("menu")}</h4>
-            <ul className="list-group">
-              <li className="list-group-item">
-                <Link to="/">{t("start")}</Link>
-              </li>
-              <li className="list-group-item">
-                <Link to="/about">{t("about")}</Link>
-              </li>
-            </ul>
-          </div>
+          <React.Fragment>
+            <div className="container p-2">
+              <h4>{t("menu")}</h4>
+              <ul className="list-group">
+                <li className="list-group-item">
+                  <Link to="/">{t("start")}</Link>
+                </li>
+                <li className="list-group-item">
+                  <Link to="/about">{t("about")}</Link>
+                </li>
+              </ul>
+            </div>
+          </React.Fragment>
         );
     }
   }
 
   return (
+    <React.Fragment>
     <nav
       className={
         props.className +
@@ -120,6 +123,7 @@ const Sidemenu: React.FC<
         </React.Fragment>
       )}
     </nav>
+    </React.Fragment>
   );
 };
 

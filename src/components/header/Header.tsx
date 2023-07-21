@@ -36,6 +36,7 @@ const Header: React.FC<React.PropsWithChildren<StatePropsT & ActionPropsT>> = (p
   const { t } = useTranslation("core");
 
   return (
+    <React.Fragment>
     <nav className="navbar navbar-expand-sm navbar-dark bg-primary pt-0 pb-0 pr-2">
       <ul className="navbar-nav ml-0 h3">
         <span
@@ -64,6 +65,7 @@ const Header: React.FC<React.PropsWithChildren<StatePropsT & ActionPropsT>> = (p
         <User />
       </div>
     </nav>
+    </React.Fragment>
   );
 };
 

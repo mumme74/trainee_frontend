@@ -36,39 +36,17 @@ root.render(
         <React.Suspense fallback="Ĺoading...">
           <App>
             <Routes>
-              <Route path="/dashboard">
-                <Dashboard />
-              </Route>
-              <Route path="/signup" >
-                <SignUp />
-              </Route>
-              <Route path="/login">
-                <Login />
-              </Route>
-              <Route path="/unauthorized">
-                <Unauthorized />
-              </Route>
-              <Route path="/student">
-                <Student />
-              </Route>
-              <Route path="/teacher">
-                <Teacher />
-              </Route>
-              <Route path="/admin">
-                <Admin />
-              </Route>
-              <Route path="/superadmin">
-                <SuperAdmin />
-              </Route>
-              <Route path="/deleteme">
-                <DeleteMe />
-              </Route>
-              <Route path="/about">
-                <About />
-              </Route>
-              <Route path="/*">
-                <Home />
-              </Route>
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/signup" element={<SignUp />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/unauthorized" element={<Unauthorized />} />
+              <Route path="/student" element={<Student />} />
+              <Route path="/teacher" element={<Teacher />} />
+              <Route path="/admin" element={<Admin />} />
+              <Route path="/superadmin" element={<SuperAdmin />} />
+              <Route path="/deleteme" element={<DeleteMe />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/*" element={<Home />} />
             </Routes>
           </App>
         </React.Suspense>

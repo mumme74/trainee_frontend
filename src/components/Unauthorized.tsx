@@ -14,6 +14,7 @@ const Unauthorized: React.FC<JsxPropsT> = (props) => {
   const { t } = useTranslation("core");
 
   return (
+    <React.Fragment>
     <div className="container">
       <h1>{t("unauth_header")}</h1>
       <p>{t("unauth_login_first")}</p>
@@ -29,6 +30,7 @@ const Unauthorized: React.FC<JsxPropsT> = (props) => {
         </div>
       )}
     </div>
+    </React.Fragment>
   );
 };
 

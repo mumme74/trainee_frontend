@@ -32,26 +32,28 @@ function OAuthLogin(props: StatePropsT & ActionPropsT) {
   }
 
   return (
-    <div className="container border-bottom mb-5">
-      <div className="row">
-        <div className="col-sm-2" />
-        <h3 className="col-sm">{t("oauth2_header")}</h3>
-      </div>
-      <div className="row p-2">
-        <div className="col-sm-2">
-          <span className=" badge bg-danger">{props.error.message}</span>
+    <React.Fragment>
+      <div className="container border-bottom mb-5">
+        <div className="row">
+          <div className="col-sm-2" />
+          <h3 className="col-sm">{t("oauth2_header")}</h3>
         </div>
-        <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
-          <GoogleLogin
-            onSuccess={credentialResponse=>responseGoogle(credentialResponse)}
-            onError={errorHappened}
-            //className="btn btn-outline-danger col-sm-2"
-            auto_select
-            useOneTap
-          />
-        </GoogleOAuthProvider>
+        <div className="row p-2">
+          <div className="col-sm-2">
+            <span className=" badge bg-danger">{props.error.message}</span>
+          </div>
+          <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
+            <GoogleLogin
+              onSuccess={credentialResponse=>responseGoogle(credentialResponse)}
+              onError={errorHappened}
+              //className="btn btn-outline-danger col-sm-2"
+              auto_select
+              useOneTap
+            />
+          </GoogleOAuthProvider>
+        </div>
       </div>
-    </div>
+    </React.Fragment>
   );
 }
 

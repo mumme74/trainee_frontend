@@ -7,12 +7,8 @@ import TeacherDashboard from "./TeacherDashboard";
 function TeacherIndex() {
   return (
     <Routes>
-      <Route path="/teacher/dashboard">
-        <TeacherDashboard />
-      </Route>
-      <Route path="/teacher/*">
-        <TeacherIndex />
-      </Route>
+      <Route path="/teacher/dashboard" element={<TeacherDashboard />} />
+      <Route path="/teacher/*" element={<TeacherIndex />} />
     </Routes>
   );
 }

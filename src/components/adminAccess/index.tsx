@@ -8,12 +8,8 @@ import AdminDashboard from "./AdminDashboard";
 function AdminIndex() {
   return (
     <Routes>
-      <Route path="/admin/users">
-        <AdminUsers />
-      </Route>
-      <Route path="/admin/*" >
-        <AdminDashboard />
-      </Route>
+      <Route path="/admin/users" element={<AdminUsers />} />
+      <Route path="/admin/*" element={<AdminDashboard />} />
     </Routes>
   );
 }

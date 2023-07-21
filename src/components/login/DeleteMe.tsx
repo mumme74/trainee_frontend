@@ -109,24 +109,29 @@ const DeleteMe: React.FC<StatePropsT & JsxPropsT> = (
 
   if (stage === 0) {
     return (
+      <React.Fragment>
       <div className="container">
         <h2>{t("delete_me_stage0_header")}</h2>
         <p>{t("delete_me_stage0_desc")}</p>
         <div className="row-sm-4">{nav}</div>
         <div className="row">{buttonRow}</div>
       </div>
+      </React.Fragment>
     );
   } else if (stage === 1) {
     return (
+      <React.Fragment>
       <div className="container">
         <h2>{t("delete_me_stage1_header")}</h2>
         <p>{t("delete_me_stage1_desc")}</p>
         <div className="row-sm-4">{nav}</div>
         <div className="row">{buttonRow}</div>
       </div>
+      </React.Fragment>
     );
   } else if (stage === 2) {
     return (
+      <React.Fragment>
       <div className="container">
         <h2>{t("delete_me_stage2_header")}</h2>
         <p>{t("delete_me_stage2_desc")}</p>
@@ -183,9 +188,11 @@ const DeleteMe: React.FC<StatePropsT & JsxPropsT> = (
           )}
         ></Form>
       </div>
+      </React.Fragment>
     );
   } else {
     return (
+      <React.Fragment>
       <div className="container">
         <h2>{t("delete_me_stage3_header")}</h2>
         <p>{t("delete_me_stage3_desc1")}</p>
@@ -200,6 +207,7 @@ const DeleteMe: React.FC<StatePropsT & JsxPropsT> = (
           {t("delete_me_stage3_to_startpage")}
         </button>
       </div>
+      </React.Fragment>
     );
   }
 };
