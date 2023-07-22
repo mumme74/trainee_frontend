@@ -5,15 +5,6 @@ import {
 } from "../redux/actions";
 
 /**
- * @brief determine authenticated state from expiration time in jwt
- * @returns boolean true if tokens exp field is still valid
- */
-export function isAuthenticated(): boolean {
-  const auth = store.getState().auth;
-  return isTokenValid(auth.token) && auth.isAuthenticated;
-}
-
-/**
  * @brief checks if token is valid regaring expiration time and issue time
  * @param jwt a JSON web token
  * @returns true if valid
@@ -78,8 +69,17 @@ export function myUserRoles(): [string] {
 }
 
 /**
+ * @brief determine authenticated state from expiration time in jwt
+ * @returns boolean true if tokens exp field is still valid
+ */
+export function isAuthenticated(): boolean {
+  const auth = store.getState().auth;
+  return isTokenValid(auth.token) && auth.isAuthenticated;
+}
+
+/**
  * @brief Merges muliple refs to the same Dom node on a React node
- * @param refs multipla arguments ocf ref objects
+ * @param refs multipla arguments of ref objects
  * @returns a ref thunk to be used by React durening object creation
  */
 export const mergeRefs = (...refs: any) => {
