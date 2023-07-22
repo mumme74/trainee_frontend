@@ -37,34 +37,34 @@ const Header: React.FC<React.PropsWithChildren<StatePropsT & ActionPropsT>> = (p
 
   return (
     <React.Fragment>
-    <nav className="navbar navbar-expand-sm navbar-dark bg-primary pt-0 pb-0 pr-2">
-      <ul className="navbar-nav ml-0 h3">
-        <span
-          className="nav-link"
-          style={{ cursor: "pointer" }}
-          onClick={props.toogleSidemenu}
-        >
-          &#8801;
-        </span>
-      </ul>
-      <Link className="navbar-brand ml-3" to="/">
-        <ErrorNotifier>
-          <ProgressIndicator progress={props.activeReqCnt > 0 ? 0.5 : 0.0}>
-            <Logo />
-          </ProgressIndicator>
-        </ErrorNotifier>
-      </Link>
-      <div className="collapse navbar-collapse justify-content-between">
-        <ul className="navbar-nav mr-auto">
-          <li className="nav-item">
-            <Link className="nav-link" to="/dashboard">
-              {t("dashboard")}
-            </Link>
-          </li>
+      <nav className="navbar navbar-expand-sm navbar-dark bg-primary pt-0 pb-0 pr-2">
+        <ul className="navbar-nav ml-0 h3">
+          <span
+            className="nav-link"
+            style={{ cursor: "pointer" }}
+            onClick={props.toogleSidemenu}
+          >
+            &#8801;
+          </span>
         </ul>
-        <User />
-      </div>
-    </nav>
+        <Link className="navbar-brand ml-3" to="/">
+          <ErrorNotifier>
+            <ProgressIndicator progress={props.activeReqCnt > 0 ? 0.5 : 0.0}>
+              <Logo />
+            </ProgressIndicator>
+          </ErrorNotifier>
+        </Link>
+        <div className="collapse navbar-collapse justify-content-between">
+          <ul className="navbar-nav mr-auto">
+            <li className="nav-item">
+              <Link className="nav-link" to="/dashboard">
+                {t("dashboard")}
+              </Link>
+            </li>
+          </ul>
+          <User />
+        </div>
+      </nav>
     </React.Fragment>
   );
 };

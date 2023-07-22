@@ -11,7 +11,7 @@ import { store } from "../../redux/store";
 
 type StatePropsT = {
   //unauthenticated: boolean;
-  errors: [IError?];
+  errors: [IError?]; // get set from redux store
 };
 
 type JsxPropsT = object;
@@ -48,43 +48,43 @@ const ErrorNotifier: React.FC<React.PropsWithChildren<StatePropsT & JsxPropsT>> 
 
   return (
     <React.Fragment>
-    <div onClick={stopClick}>
-      {props.children}
-      {props.errors.length > 0 && (
-        <div
-          className={css.errorCircle}
-          ref={errorCircle}
-          onClick={() => {
-            setShowMenu(!showMenu);
+      <div onClick={stopClick}>
+        {props.children}
+        {props.errors.length > 0 && (
+          <div
+            className={css.errorCircle}
+            ref={errorCircle}
+            onClick={() => {
+              setShowMenu(!showMenu);
+            }}
+            title={props.errors.length + " " + t("error_notifier_count_post")}
+          />
+        )}
+        <DropdownMenu
+          caption={t("error_notifier_caption")}
+          ref={menuNodeRef}
+          show={showMenu}
+          onClose={() => {
+            setShowMenu(false);
           }}
-          title={props.errors.length + " " + t("error_notifier_count_post")}
-        />
-      )}
-      <DropdownMenu
-        caption={t("error_notifier_caption")}
-        ref={menuNodeRef}
-        show={showMenu}
-        onClose={() => {
-          setShowMenu(false);
-        }}
-      >
-        <React.Fragment>
-          <ul>
-            {props.errors.map((err,i) => {
-              return (
-                <li className="dropdown-item" key={i}>{err?.message || err?.type}</li>
-              );
-            })}
-          </ul>
-          <footer>
-            <span></span>
-            <button className="btn-small" onClick={clearErrorHandler}>
-              {t("clear")}
-            </button>
-          </footer>
-        </React.Fragment>
-      </DropdownMenu>
-    </div>
+        >
+          <React.Fragment>
+            <ul>
+              {props.errors.map((err,i) => {
+                return (
+                  <li className="dropdown-item" key={i}>{err?.message || err?.type}</li>
+                );
+              })}
+            </ul>
+            <footer>
+              <span></span>
+              <button className="btn-small" onClick={clearErrorHandler}>
+                {t("clear")}
+              </button>
+            </footer>
+          </React.Fragment>
+        </DropdownMenu>
+      </div>
     </React.Fragment>
   );
 };
