@@ -34,6 +34,7 @@
   "error_notifier_caption": "System fel",
   "error_notifier_count_post": "System fel",
   "firstname": "Förnamn",
+  "google_login_failed": "Misslyckades med Google login",
   "header_edit_my_profile": "Ändra min profil",
   "hide": "Göm",
   "home_description": "Det här är en en app som gör lärares arbete mer hanterbart.",

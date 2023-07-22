@@ -37,7 +37,7 @@
     "start": "react-scripts start",
     "build": "tsc --build",
     "start-dev": "NODE_ENV=development npm run start --prefix client",
-    "test": "react-scripts test",
+    "test": "jest",
     "eject": "react-scripts eject",
     "translation": "NODE_ENV=development npm run translation-parse --prefix client",
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}' --quiet --fix"
@@ -63,6 +63,8 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^14.0.0",
-    "@testing-library/user-event": "^14.4.0"
+    "@testing-library/user-event": "^14.4.0",
+    "jest": "^27.5.1",
+    "jsonwebtoken": "^9.0.1"
   }
 }

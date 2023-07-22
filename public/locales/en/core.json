@@ -34,6 +34,7 @@
   "error_notifier_caption": "System errors",
   "error_notifier_count_post": "system errors",
   "firstname": "First name",
+  "google_login_failed": "Failed Google login attempt",
   "header_edit_my_profile": "Edit my profile",
   "hide": "Hide",
   "home_description": "This is a app to make teachers work more manageble.",
