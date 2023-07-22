@@ -1,48 +1,9 @@
-import { AUTH_SIGN_IN } from "../../src/redux/actions/types";
 import { isAuthenticated, isTokenValid, myUserRoles } from "../../src/helpers";
 import { setAuthenticationExpired } from "../../src/redux/actions";
-import { loginHandler, logout } from "../../src/redux/actions/auth";
-import { store, initStore } from "../../src/redux/store";
-import JWT  from "jsonwebtoken";
+import { store } from "../../src/redux/store";
+import { signJwt, fakeLogin, cleanupAuth } from "../common";
 
 
-function signJwt(
-    expires: number = 100,
-    roles: string[] = [],
-    iat: number = 0)
-{
-  const now = Math.floor(new Date().getTime()) / 1000; // sec not ms
-  return JWT.sign({
-      iss: "Testing",
-      sub: 1234,
-      iat: iat ? iat + now : (expires < 0 ? now - expires : now),
-      exp: now + expires,
-      roles
-    },
-    "123456789ABCDFEF"
-  );
-}
-
-function fakeLogin(jwt: string) {
-  const user = {
-    userName:"test", firstName:"Test", lastName:"Testsson",
-    email:"test@test.nu", picture:"",method:"",error:{}
-  };
-  const res = {
-    access_token: jwt,
-    user:{id:"123", ...user},
-    data:jwt,
-    status:200, statusText:"OK",
-    headers:{},
-    config: {},
-  }
-  loginHandler(store.dispatch, res, AUTH_SIGN_IN);
-}
-
-function cleanupAuth() {
-  logout()(store.dispatch);
-  initStore();
-}
 
 describe("Test JsonWebToken", ()=>{
   beforeEach(()=>{
