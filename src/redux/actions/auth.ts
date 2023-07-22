@@ -68,7 +68,8 @@ function errorHandler(dispatch: AppDispatch, err: ErrT) {
   delete axios.defaults.headers.common["Authorization"];
 }
 
-function loginHandler(
+// exported only to be able to test
+export function loginHandler(
   dispatch: AppDispatch,
   responseData: ResponseDataT,
   actionType: string,
@@ -90,6 +91,8 @@ function loginHandler(
 export const oAuthGoogle = (data: any) => {
   return async (dispatch: AppDispatch) => {
     try {
+      if (data.error) throw data.error;
+
       console.log("we recived data", data);
 
       const res = await axios.post(`${SERVERURL}/users/oauth/google`, {

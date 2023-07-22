@@ -8,6 +8,7 @@ import { GOOGLE_CLIENT_ID } from "../../config/config";
 import * as actions from "../../redux/actions";
 import { RootState } from "../../redux/store";
 import { IAuth } from "../../redux/actions/types";
+import ErrorNotifier from "../header/ErrorNotifier";
 //import { oAuthGoogle } from "../../redux/actions/auth";
 
 type StatePropsT = {
@@ -27,8 +28,9 @@ function OAuthLogin(props: StatePropsT & ActionPropsT) {
     await props.oAuthGoogle(res);
   };
 
-  const errorHappened = () => {
+  const errorHappened = async () => {
     console.log('Error logging in');
+    await props.oAuthGoogle({error: t("google_login_failed")})
   }
 
   return (
