@@ -1,6 +1,8 @@
 import {store, initStore } from "../src/redux/store";
 import { loginHandler, logout } from "../src/redux/actions/auth";
 import { AUTH_SIGN_IN } from "../src/redux/actions/types";
+import { Console } from "console";
+import internal, { Stream } from "stream";
 import JWT  from "jsonwebtoken";
 
 export function signJwt(
@@ -65,4 +67,62 @@ export function mockI18Next(){
   jest.mock('react-i18next', () => ({
 
   }));
+}
+
+
+export class ArrStream extends Stream.Writable {
+  private arr: any[];
+  constructor(
+    arr: any[],
+    opts?: internal.WritableOptions | undefined
+  ) {
+    super(opts);
+    this.arr = arr;
+  }
+  _write(chunk: any, enc:any, next:any) {
+    this.arr.push(chunk.toString ? chunk.toString() : chunk);
+    next();
+  }
+}
+
+export class MockConsole extends Console {
+  private oldConsole = global.console;
+  private stdOutArr: any[];
+  private stdErrArr: any[];
+
+  constructor() {
+    console.log('redirect console')
+    const stdOutArr: any[] = [], stdErrArr:any[] = [];
+    const stdout = new ArrStream(stdOutArr),
+          stderr = new ArrStream(stdErrArr);
+
+    super(stdout, stderr);
+
+    this.oldConsole = global.console;
+    global.console = this;
+    this.stdErrArr = stdErrArr;
+    this.stdOutArr = stdOutArr;
+  }
+
+  get stdout(): any[] {
+    return [...this.stdOutArr.splice(0)];
+  }
+
+  get stderr(): any[] {
+    return [...this.stdErrArr.splice(0)];
+  }
+
+  debug(message?: any, ...optionalParams: any[]): void {
+    this.oldConsole.log.apply(this.oldConsole, arguments as any);
+  }
+
+  clear() {
+    this.stdErrArr.splice(0);
+    this.stdOutArr.splice(0);
+  }
+
+  restore() {
+    global.console = this.oldConsole;
+    console.log('console restored');
+  }
 }

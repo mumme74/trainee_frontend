@@ -2,9 +2,8 @@ import React, { ReactElement } from "react";
 import ReactDOM from "react-dom/client"
 import { BrowserRouter } from "react-router-dom";
 import { act } from "@testing-library/react"
-import pretty from "pretty"
+import { MockConsole } from "../common";
 import "../i18n_for_tests";
-
 
 import { fakeLogin, signJwt, cleanupAuth } from "../common";
 
@@ -15,6 +14,8 @@ import {
   withAuthGuardSuperAdmin,
   withAuthGuardTeacher
 } from "../../src/components/HOCs/authGuards";
+
+const squelshConsole = true;
 
 
 let container: HTMLDivElement;
@@ -28,6 +29,17 @@ beforeEach(()=>{
 afterEach(()=>{
   document.body.removeChild(container);
   container.remove();
+});
+
+let mockConsole: MockConsole;
+beforeAll(()=>{
+  if (squelshConsole)
+    mockConsole = new MockConsole();
+});
+
+afterAll(()=>{
+  if (mockConsole)
+    mockConsole.restore();
 });
 
 const _TestComp: React.FC<React.PropsWithChildren> = (props) => {

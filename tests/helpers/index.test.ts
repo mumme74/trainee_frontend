@@ -2,7 +2,20 @@ import { isAuthenticated, isTokenValid, myUserRoles } from "../../src/helpers";
 import { setAuthenticationExpired } from "../../src/redux/actions";
 import { store } from "../../src/redux/store";
 import { signJwt, fakeLogin, cleanupAuth } from "../common";
+import { MockConsole } from "../common";
 
+const squelshConsole = true;
+
+let mockConsole: MockConsole;
+beforeAll(()=>{
+  if (squelshConsole)
+    mockConsole = new MockConsole();
+});
+
+afterAll(()=>{
+  if (mockConsole)
+    mockConsole.restore();
+});
 
 
 describe("Test JsonWebToken", ()=>{

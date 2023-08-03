@@ -5,4 +5,6 @@ module.exports = {
     "@babel/preset-react",
     "@babel/preset-typescript",
   ],
+  sourceMap: "inline",
+  retainLines: true,
 };
