@@ -2,9 +2,9 @@ import { compose } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
 
 import reduxThunk from "redux-thunk";
-import reducers from "./reducers";
-import { AUTH_SIGN_UP } from "./actions/types";
-import { refreshUserInfo } from "./actions";
+import reducers from "./reducers/index.reducer";
+import { AUTH_SIGN_UP } from "./actions/action.types";
+import { refreshUserInfo } from "./actions/user.action";
 import { DEV_MODE } from "../config/config";
 import { isTokenValid } from "../helpers";
 

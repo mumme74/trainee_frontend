@@ -5,15 +5,16 @@ import {
   AUTH_SIGN_IN,
   AUTH_SIGN_OUT,
   IAuth,
-} from "../actions/types";
+} from "../actions/action.types";
 
 const DEFAULT_STATE: IAuth = {
   isAuthenticated: false,
   token: "",
   error: {},
+  errorOAuth: {},
 };
 
-function authReducer(state: IAuth = DEFAULT_STATE, action: AnyAction) {
+export function authReducer(state: IAuth = DEFAULT_STATE, action: AnyAction) {
   switch (action.type) {
     case AUTH_SIGN_IN:
     case AUTH_SIGN_UP: // fallthrough
@@ -44,5 +45,3 @@ function authReducer(state: IAuth = DEFAULT_STATE, action: AnyAction) {
       return state;
   }
 }
-
-export default authReducer;

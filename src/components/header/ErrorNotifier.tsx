@@ -4,9 +4,9 @@ import { useTranslation } from "react-i18next";
 
 import css from "./ErrorNotifier.module.css";
 import { RootState } from "../../redux/store";
-import type { IError } from "../../redux/reducers/errors";
+import type { IError } from "../../redux/reducers/error.reducer";
 import DropdownMenu from "../menus/DropdownMenu";
-import { clearAllErrors } from "../../redux/actions/errors";
+import { clearAllErrors } from "../../redux/actions/error.action";
 import { store } from "../../redux/store";
 
 type StatePropsT = {

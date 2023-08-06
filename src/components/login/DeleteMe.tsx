@@ -5,9 +5,9 @@ import { useTranslation } from "react-i18next";
 import axios from "axios";
 
 import FormRow from "../form/FormRow";
-import { SERVERURL } from "../../config/config";
+import { SERVER_URL } from "../../config/config";
 import { store, AppDispatch } from "../../redux/store";
-import { logout } from "../../redux/actions/auth";
+import { logout } from "../../redux/actions/auth.action";
 
 type DeleteForm = {
   userName: string;
@@ -47,7 +47,7 @@ const DeleteMe: React.FC<StatePropsT & JsxPropsT> = (
   async function onSubmit(values: DeleteForm) {
     console.log("onSubmit");
     try {
-      const res = await axios.post(`${SERVERURL}/users/deletemyself`, values);
+      const res = await axios.post(`${SERVER_URL}/users/deletemyself`, values);
       if (!res || !res.data) {
         setError("Something went wrong in transport to server");
       }

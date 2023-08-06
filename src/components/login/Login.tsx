@@ -7,11 +7,11 @@ import { useTranslation } from "react-i18next";
 
 import FormRow from "../form/FormRow";
 import val from "../form/validators";
-import * as actions from "../../redux/actions";
+import * as actions from "../../redux/actions/index.action";
 import OAuthLogin from "./OAuthLogin";
-import { RootState } from "../../redux/store";
-import { IAuth } from "../../redux/actions/types";
-import { ILoginData } from "../../redux/actions/auth";
+import { RootState, store } from "../../redux/store";
+import { IAuth } from "../../redux/actions/action.types";
+import { ILoginData, login } from "../../redux/actions/auth.action";
 
 type StatePropsT = {
   error: IAuth["error"];
@@ -19,7 +19,9 @@ type StatePropsT = {
 };
 
 type ActionPropsT = {
-  login: (data: ILoginData) => void;
+  auth: {
+    login: (data: ILoginData) => void;
+  }
 };
 
 const Login: React.FC<StatePropsT & ActionPropsT> = (props) => {
@@ -30,7 +32,7 @@ const Login: React.FC<StatePropsT & ActionPropsT> = (props) => {
     try {
       console.log("submit");
       // we need to call a actionCreator
-      props.login(formData);
+      login(formData)(store.dispatch);
     } catch (err) {
       console.error(err);
     }
@@ -105,6 +107,9 @@ const Login: React.FC<StatePropsT & ActionPropsT> = (props) => {
                   )}
                   <Link className="mx-4" to="/signup">
                     {t("login_sign_up_as_new_user")}
+                  </Link>
+                  <Link className="mx-4" to="/passwordReset">
+                    {t("req_pw_reset")}
                   </Link>
                 </div>
               </div>

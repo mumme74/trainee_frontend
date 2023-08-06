@@ -2,7 +2,7 @@ import { store, AppDispatch, RootState } from "../redux/store";
 import {
   setCommuncationError,
   setAuthenticationExpired,
-} from "../redux/actions";
+} from "../redux/actions/error.action";
 
 /**
  * @brief checks if token is valid regaring expiration time and issue time

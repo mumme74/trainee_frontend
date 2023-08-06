@@ -22,6 +22,7 @@ import Teacher from "./components/teacherAccess";
 import SuperAdmin from "./components/superAdminAccess";
 import About from "./components/About";
 import DeleteMe from "./components/login/DeleteMe";
+import PasswordReset from "./components/login/PasswordReset";
 
 const store = initStore();
 initAxios();
@@ -46,6 +47,7 @@ root.render(
               <Route path="/superadmin" element={<SuperAdmin />} />
               <Route path="/deleteme" element={<DeleteMe />} />
               <Route path="/about" element={<About />} />
+              <Route path="/passwordReset" element={<PasswordReset /> } />
               <Route path="/*" element={<Home />} />
             </Routes>
           </App>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { useTranslation } from "react-i18next";
 
-import * as actions from "../redux/actions";
+import * as actions from "../redux/actions/index.action";
 import { AppDispatch, RootState } from "../redux/store";
 import { withAuthGuardCommon } from "./HOCs/authGuards";
 

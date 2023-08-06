@@ -8,7 +8,7 @@ import i18next from "i18next";
 
 import "flag-icons/css/flag-icons.min.css";
 
-import * as actions from "../../redux/actions";
+import * as actions from "../../redux/actions/index.action";
 import { RootState } from "../../redux/store";
 import Avatar from "./Avatar";
 import DropdownMenu from "../menus/DropdownMenu";
@@ -24,7 +24,9 @@ type StateProps = {
 };
 
 type JsxProps = {
-  logout: () => void;
+  auth: {
+    logout: () => void;
+  }
 };
 
 function User(props: StateProps & JsxProps) {
@@ -103,7 +105,7 @@ function User(props: StateProps & JsxProps) {
               {t("header_edit_my_profile")}
             </Link>
             <div className="dropdown-divider"></div>
-            <button className="dropdown-item btn" onClick={props.logout}>
+            <button className="dropdown-item btn" onClick={props.auth.logout}>
               {t("logout")}
             </button>
             <div className="dropdown-divider"></div>

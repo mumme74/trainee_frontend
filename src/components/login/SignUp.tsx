@@ -6,10 +6,10 @@ import { compose } from "redux";
 
 import FormRow from "../form/FormRow";
 import val from "../form/validators";
-import * as actions from "../../redux/actions";
+import * as actions from "../../redux/actions/index.action";
 import OAuthLogin from "./OAuthLogin";
 import { RootState } from "../../redux/store";
-import { IAuth, ISignUpNewUserForm } from "../../redux/actions/types";
+import { IAuth, ISignUpNewUserForm } from "../../redux/actions/action.types";
 import { useNavigate } from "react-router-dom";
 
 type StatePropsT = {
@@ -18,7 +18,9 @@ type StatePropsT = {
 };
 
 type ActionPropsT = {
-  signUp: (data: ISignUpNewUserForm) => void;
+  auth: {
+    signUp: (data: ISignUpNewUserForm) => void;
+  }
 };
 
 interface IFormData extends ISignUpNewUserForm {
@@ -34,7 +36,7 @@ function SignUp(props: StatePropsT & ActionPropsT) {
       console.log("submit");
       // we need to call a actionCreator
       const data = { ...formData, confirm: undefined };
-      props.signUp(data);
+      props.auth.signUp(data);
     } catch (err) {
       console.error(err);
     }

@@ -8,12 +8,12 @@ import {
   IAuth,
   IUser,
   ISignUpNewUserForm,
-} from "./types";
+} from "./action.types";
 
-import { SERVERURL } from "../../config/config";
+import { SERVER_URL } from "../../config/config";
 import { AppDispatch } from "../store";
 
-import { setUserInfo, clearUserInfo } from "./user";
+import { setUserInfo, clearUserInfo } from "./user.action";
 
 type ServerErrT = {
   error: string;
@@ -26,6 +26,16 @@ type ResponseDataT = {
 };
 
 type ErrT = AxiosError | Error;
+
+export const setAccessToken = (token:string) => {
+  axios.defaults.headers.common["Authorization"] = token;
+  localStorage.setItem("JWT_TOKEN", token);
+}
+
+export const clearAccessToken = () => {
+  localStorage.removeItem("JWT_TOKEN");
+  delete axios.defaults.headers.common["Authorization"];
+}
 
 export interface ILoginData {
   password: string;
@@ -64,8 +74,7 @@ function errorHandler(dispatch: AppDispatch, err: ErrT) {
     payload: { message },
   });
 
-  localStorage.removeItem("JWT_TOKEN");
-  delete axios.defaults.headers.common["Authorization"];
+  clearAccessToken();
 }
 
 // exported only to be able to test
@@ -77,8 +86,7 @@ export function loginHandler(
   const token = responseData.access_token;
   if (!token) return errorHandler(dispatch, new Error("Recieved empty token"));
 
-  axios.defaults.headers.common["Authorization"] = token;
-  localStorage.setItem("JWT_TOKEN", token);
+  setAccessToken(token);
 
   dispatch({
     type: actionType,
@@ -93,9 +101,9 @@ export const oAuthGoogle = (data: any) => {
     try {
       if (data.error) throw data.error;
 
-      console.log("we recived data", data);
+      console.log("we received data", data);
 
-      const res = await axios.post(`${SERVERURL}/users/oauth/google`, {
+      const res = await axios.post(`${SERVER_URL}/api/v1/users/oauth/google`, {
         access_token: data.tokenId,
       });
 
@@ -117,7 +125,7 @@ export const signUp = (data: ISignUpNewUserForm) => {
     try {
       //console.log("ActionCreator called");
 
-      const res = await axios.post(`${SERVERURL}/users/signup`, data);
+      const res = await axios.post(`${SERVER_URL}/api/v1/users/signup`, data);
       loginHandler(dispatch, res.data, AUTH_SIGN_UP);
     } catch (err: any) {
       errorHandler(dispatch, err);
@@ -127,7 +135,7 @@ export const signUp = (data: ISignUpNewUserForm) => {
 
 export const logout = () => {
   return (dispatch: AppDispatch) => {
-    localStorage.removeItem("JWT_TOKEN");
+    clearAccessToken();
 
     dispatch({
       type: AUTH_SIGN_OUT,
@@ -141,7 +149,7 @@ export const logout = () => {
 export const login = (data: ILoginData) => {
   return async (dispatch: AppDispatch) => {
     try {
-      const res = await axios.post(`${SERVERURL}/users/login`, data);
+      const res = await axios.post(`${SERVER_URL}/api/v1/users/login`, data);
       loginHandler(dispatch, res.data, AUTH_SIGN_UP);
     } catch (err: any) {
       errorHandler(dispatch, err);

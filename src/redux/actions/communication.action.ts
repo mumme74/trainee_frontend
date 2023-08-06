@@ -1,4 +1,4 @@
-import { COMMUNICATION_CNT } from "./types";
+import { COMMUNICATION_CNT } from "./action.types";
 import { AppDispatch } from "../store";
 
 export const startCommunication = () => {

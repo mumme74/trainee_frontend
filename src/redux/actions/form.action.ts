@@ -1,4 +1,4 @@
-import { UPDATE_FORM_STATE, ILoginForm } from "./types";
+import { UPDATE_FORM_STATE, ILoginForm } from "./action.types";
 import { AppDispatch } from "../store";
 
 // Action Creators

@@ -1,4 +1,4 @@
-import { COMMUNICATION_CNT } from "../actions/types";
+import { COMMUNICATION_CNT } from "../actions/action.types";
 import { AnyAction } from "redux";
 
 const DEFAULT_STATE = {
@@ -6,7 +6,7 @@ const DEFAULT_STATE = {
   progress: 0.0,
 };
 
-export default function communicationReducer(
+export function communicationReducer(
   state = DEFAULT_STATE,
   action: AnyAction,
 ) {

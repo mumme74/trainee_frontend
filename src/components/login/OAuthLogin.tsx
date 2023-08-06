@@ -5,19 +5,22 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 
 import { GOOGLE_CLIENT_ID } from "../../config/config";
-import * as actions from "../../redux/actions";
+import * as actions from "../../redux/actions/index.action";
 import { RootState } from "../../redux/store";
-import { IAuth } from "../../redux/actions/types";
+import { IAuth } from "../../redux/actions/action.types";
 import ErrorNotifier from "../header/ErrorNotifier";
 //import { oAuthGoogle } from "../../redux/actions/auth";
 
 type StatePropsT = {
   isAuthenticated: boolean;
   error: IAuth["error"];
+  errorOAuth: IAuth['errorOAuth']
 };
 
 type ActionPropsT = {
-  oAuthGoogle: (res: any) => void; //typeof oAuthGoogle;
+  auth:{
+    oAuthGoogle: (res: any) => void; //typeof oAuthGoogle;
+  }
 };
 
 function OAuthLogin(props: StatePropsT & ActionPropsT) {
@@ -25,12 +28,12 @@ function OAuthLogin(props: StatePropsT & ActionPropsT) {
 
   const responseGoogle = async (res: any) => {
     //console.log("response google", res);
-    await props.oAuthGoogle(res);
+    await props.auth.oAuthGoogle(res);
   };
 
   const errorHappened = async () => {
     console.log('Error logging in');
-    await props.oAuthGoogle({error: t("google_login_failed")})
+    await props.auth.oAuthGoogle({error: t("google_login_failed")})
   }
 
   return (
@@ -42,7 +45,7 @@ function OAuthLogin(props: StatePropsT & ActionPropsT) {
         </div>
         <div className="row p-2">
           <div className="col-sm-2">
-            <span className=" badge bg-danger">{props.error.message}</span>
+            <span className=" badge bg-danger">{props.errorOAuth.message}</span>
           </div>
           <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
             <GoogleLogin
@@ -62,6 +65,7 @@ function OAuthLogin(props: StatePropsT & ActionPropsT) {
 const mapStateToProps = (state: RootState): StatePropsT => {
   return {
     error: state.auth.error,
+    errorOAuth: state.auth.errorOAuth,
     isAuthenticated: state.auth.isAuthenticated,
   };
 };

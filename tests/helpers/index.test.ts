@@ -1,5 +1,7 @@
 import { isAuthenticated, isTokenValid, myUserRoles } from "../../src/helpers";
-import { setAuthenticationExpired } from "../../src/redux/actions";
+import {
+  setAuthenticationExpired
+} from "../../src/redux/actions/error.action";
 import { store } from "../../src/redux/store";
 import { signJwt, fakeLogin, cleanupAuth } from "../common";
 import { MockConsole } from "../common";

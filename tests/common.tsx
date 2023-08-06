@@ -1,6 +1,6 @@
 import {store, initStore } from "../src/redux/store";
-import { loginHandler, logout } from "../src/redux/actions/auth";
-import { AUTH_SIGN_IN } from "../src/redux/actions/types";
+import { loginHandler, logout } from "../src/redux/actions/auth.action";
+import { AUTH_SIGN_IN } from "../src/redux/actions/action.types";
 import { Console } from "console";
 import internal, { Stream } from "stream";
 import JWT  from "jsonwebtoken";
@@ -29,7 +29,7 @@ export function fakeLogin(jwt: string) {
   };
   const res = {
     access_token: jwt,
-    user:{id:"123", ...user},
+    user:{id:123, ...user},
     data:jwt,
     status:200, statusText:"OK",
     headers:{},

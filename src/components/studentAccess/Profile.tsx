@@ -6,16 +6,18 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import { RootState } from "../../redux/store";
-import { IUser } from "../../redux/actions/types";
-import * as actions from "../../redux/actions";
+import { IUser } from "../../redux/actions/action.types";
+import * as actions from "../../redux/actions/index.action";
 import val from "../form/validators";
 import FormRow from "../form/FormRow";
 
-// render a profile form where users can change their own inforamtion
+// render a profile form where users can change their own information
 
 type ActionPropsT = {
-  saveMyUserInfo: (data: IUser) => void;
-  changeMyPassword: (data: { password: string }) => void;
+  user: {
+    saveMyUserInfo: (data: IUser) => void;
+    changeMyPassword: (data: { password: string }) => void;
+  }
 };
 type StatePropsT = {
   user: IUser;
@@ -30,12 +32,12 @@ const Profile: React.FC<StatePropsT & ActionPropsT> = (props) => {
 
   function saveUserInfo(data: IUser) {
     console.log("onSubmit called", data);
-    props.saveMyUserInfo(data);
+    props.user.saveMyUserInfo(data);
   }
 
   function changePassword(data: { password: string }) {
     console.log("Changing password");
-    props.changeMyPassword({ password: data.password });
+    props.user.changeMyPassword({ password: data.password });
   }
 
   return (

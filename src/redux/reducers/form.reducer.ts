@@ -1,4 +1,4 @@
-import { UPDATE_FORM_STATE, ILoginForm } from "../actions/types";
+import { UPDATE_FORM_STATE, ILoginForm } from "../actions/action.types";
 import { AnyAction } from "redux";
 
 const INITIAL_STATE: ILoginForm = {
@@ -7,7 +7,7 @@ const INITIAL_STATE: ILoginForm = {
 };
 
 // Reducer
-const formReducer = (state: ILoginForm = INITIAL_STATE, action: AnyAction) => {
+export const formReducer = (state: ILoginForm = INITIAL_STATE, action: AnyAction) => {
   switch (action.type) {
     case UPDATE_FORM_STATE:
       return {
@@ -18,5 +18,3 @@ const formReducer = (state: ILoginForm = INITIAL_STATE, action: AnyAction) => {
       return state;
   }
 };
-
-export default formReducer;

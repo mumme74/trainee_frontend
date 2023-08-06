@@ -3,11 +3,11 @@ import { store } from "./redux/store";
 import {
   startCommunication,
   endCommunication,
-} from "./redux/actions/communication";
+} from "./redux/actions/communication.action";
 import {
   setCommuncationError,
   setAuthenticationExpired,
-} from "./redux/actions";
+} from "./redux/actions/error.action";
 
 /**
  * @brief initializes defaults and sets up request/response sniffers

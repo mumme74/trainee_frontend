@@ -6,14 +6,14 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import { useTranslation } from "react-i18next";
 
 import { AppDispatch, RootState } from "../../redux/store";
-import { setSidemenuIsShown } from "../../redux/actions";
+import { setSideMenuIsShown } from "../../redux/actions/sideMenu.action";
 import { myUserRoles } from "../../helpers";
 import StudentMenu from "../studentAccess/StudentMenu";
 import TeacherMenu from "../teacherAccess/TeacherMenu";
 import AdminMenu from "../adminAccess/AdminMenu";
 import SuperAdminMenu from "../superAdminAccess/SuperAdminMenu";
 
-import "./Sidemenu.css";
+import "./SideMenu.css";
 
 type StatePropsT = {
   isShown: boolean;
@@ -23,10 +23,10 @@ type JsxProps = {
   caption?: string;
 };
 type ActionPropsT = {
-  setSidemenuIsShown: (e: any) => void;
+  setSideMenuIsShown: (e: any) => void;
 };
 
-const Sidemenu: React.FC<
+const SideMenu: React.FC<
   React.PropsWithChildren<StatePropsT & ActionPropsT & JsxProps>
 > = (props) => {
   const myRoles = myUserRoles();
@@ -45,7 +45,7 @@ const Sidemenu: React.FC<
   });
 
   function close() {
-    props.setSidemenuIsShown(false);
+    props.setSideMenuIsShown(false);
   }
 
   function changeRole(role: any) {
@@ -130,16 +130,16 @@ const Sidemenu: React.FC<
 // redux stuff
 const mapStateToProps = (state: RootState): StatePropsT => {
   return {
-    isShown: state.sidemenu.isShown,
+    isShown: state.sideMenu.isShown,
   };
 };
 
 const mapDispatchToProps = (dispatch: AppDispatch): ActionPropsT => {
   return {
-    setSidemenuIsShown: (e: any) => {
-      setSidemenuIsShown(false)(dispatch);
+    setSideMenuIsShown: (e: any) => {
+      setSideMenuIsShown(false)(dispatch);
     },
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Sidemenu);
+export default connect(mapStateToProps, mapDispatchToProps)(SideMenu);

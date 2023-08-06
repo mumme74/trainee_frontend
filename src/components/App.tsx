@@ -1,13 +1,13 @@
 import React from "react";
 import Header from "./header/Header";
-import Sidemenu from "./menus/Sidemenu";
+import SideMenu from "./menus/SideMenu";
 
 import "./App.css";
 
 export default function App(props: { children: React.ReactNode }) {
   return (
     <React.Fragment>
-      <Sidemenu />
+      <SideMenu />
       <div className="headerAndContent">
         <Header />
         <div className="container">{props.children}</div>

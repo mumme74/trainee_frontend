@@ -3,7 +3,7 @@ import {
   ERROR_CLEAR_ALL,
   ERROR_COMMUNICATION,
   ERROR_COMMUNICATION_CLEAR,
-} from "../actions/types";
+} from "../actions/action.types";
 import { AnyAction } from "redux";
 
 export interface IError extends Error {

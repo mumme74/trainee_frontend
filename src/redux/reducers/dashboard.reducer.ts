@@ -1,5 +1,5 @@
 import { AnyAction } from "redux";
-import { DASHBOARD_GET_DATA, IDashboard } from "../actions/types";
+import { DASHBOARD_GET_DATA, IDashboard } from "../actions/action.types";
 
 const DEFAULT_STATE: IDashboard = {
   secret: "",

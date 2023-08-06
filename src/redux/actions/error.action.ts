@@ -2,7 +2,7 @@ import {
   ERROR_COMMUNICATION,
   ERROR_AUTENTICATION_EXPIRED,
   ERROR_CLEAR_ALL,
-} from "./types";
+} from "./action.types";
 import { AppDispatch } from "../store";
 
 export const setCommuncationError = (error: Error | string) => {
