@@ -41,6 +41,7 @@
   "home_header": "Welcome to our webapp!",
   "home_login_first": "If you want to use it, please login first!",
   "in_progress": "In progress",
+  "language":"language",
   "last_name": "Last name",
   "login": "Login",
   "login_form": "login form",

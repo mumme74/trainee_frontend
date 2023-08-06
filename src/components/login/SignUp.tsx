@@ -30,6 +30,7 @@ interface IFormData extends ISignUpNewUserForm {
 function SignUp(props: StatePropsT & ActionPropsT) {
   const [locked, setLocked] = useState<boolean>(true);
   const { t } = useTranslation("core");
+  const navigate = useNavigate();
 
   const onSubmit = async (formData: IFormData) => {
     try {
@@ -43,10 +44,9 @@ function SignUp(props: StatePropsT & ActionPropsT) {
   };
 
   useEffect(() => {
-    if (props.isAuthenticated) {
-      const navigate = useNavigate();
+    if (props.isAuthenticated)
       navigate("/dashboard");
-    }
+
   }, [props.isAuthenticated]);
 
   return (

@@ -27,6 +27,7 @@ type ActionPropsT = {
 const Login: React.FC<StatePropsT & ActionPropsT> = (props) => {
   const [showForm, setShowForm] = useState(false);
   const { t } = useTranslation("core");
+  const navigate = useNavigate();
 
   const onSubmit = async (formData: ILoginData) => {
     try {
@@ -39,10 +40,9 @@ const Login: React.FC<StatePropsT & ActionPropsT> = (props) => {
   };
 
   useEffect(() => {
-    if (props.isAuthenticated) {
-      const navigate = useNavigate();
+    if (props.isAuthenticated)
       navigate("/dashboard");
-    }
+
   }, [props.isAuthenticated]);
 
   return (

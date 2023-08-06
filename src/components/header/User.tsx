@@ -14,6 +14,7 @@ import Avatar from "./Avatar";
 import DropdownMenu from "../menus/DropdownMenu";
 import { myUserRoles } from "../../helpers";
 import { availableLanguages } from "../../i18n/i18n";
+import { logout } from "../../redux/actions/auth.action";
 
 type StateProps = {
   isAuthenticated: boolean;
@@ -23,11 +24,7 @@ type StateProps = {
   email: string;
 };
 
-type JsxProps = {
-  auth: {
-    logout: () => void;
-  }
-};
+type JsxProps = object;
 
 function User(props: StateProps & JsxProps) {
   const [showMenu, setShowMenu] = useState<boolean>(false);
@@ -105,7 +102,7 @@ function User(props: StateProps & JsxProps) {
               {t("header_edit_my_profile")}
             </Link>
             <div className="dropdown-divider"></div>
-            <button className="dropdown-item btn" onClick={props.auth.logout}>
+            <button className="dropdown-item btn" onClick={logout}>
               {t("logout")}
             </button>
             <div className="dropdown-divider"></div>
@@ -119,7 +116,7 @@ function User(props: StateProps & JsxProps) {
                 e.stopPropagation();
               }}
             >
-              {langChooser}
+              <span>{t('language')}</span>{langChooser}
             </div>
           </DropdownMenu>
         </React.Fragment>
