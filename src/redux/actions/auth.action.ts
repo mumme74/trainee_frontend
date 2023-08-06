@@ -65,7 +65,7 @@ function errorHandler(dispatch: AppDispatch, err: ErrT) {
       message = axiosErr.message;
     }
   } else {
-    console.warn("error occured", err);
+    console.warn("error occurred", err);
     message = err.message;
   }
 
@@ -84,7 +84,7 @@ export function loginHandler(
   actionType: string,
 ) {
   const token = responseData.access_token;
-  if (!token) return errorHandler(dispatch, new Error("Recieved empty token"));
+  if (!token) return errorHandler(dispatch, new Error("Received empty token"));
 
   setAccessToken(token);
 

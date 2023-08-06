@@ -23,12 +23,12 @@ function mapStateToProps(state: RootState): StatePropsT {
 }
 
 type ActionPropsT = {
-  toogleSideMenu: (e: any) => void;
+  toggleSideMenu: (e: any) => void;
 };
 
 function mapDispatchToProps(dispatch: AppDispatch): ActionPropsT {
   return {
-    toogleSideMenu: (e) => toggleSideMenu()(dispatch),
+    toggleSideMenu: (e) => toggleSideMenu()(dispatch),
   };
 }
 
@@ -42,7 +42,7 @@ const Header: React.FC<React.PropsWithChildren<StatePropsT & ActionPropsT>> = (p
           <span
             className="nav-link"
             style={{ cursor: "pointer" }}
-            onClick={props.toogleSideMenu}
+            onClick={props.toggleSideMenu}
           >
             &#8801;
           </span>

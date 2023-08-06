@@ -1,11 +1,11 @@
 import { store, AppDispatch, RootState } from "../redux/store";
 import {
-  setCommuncationError,
+  setCommunicationError,
   setAuthenticationExpired,
 } from "../redux/actions/error.action";
 
 /**
- * @brief checks if token is valid regaring expiration time and issue time
+ * @brief checks if token is valid regarding expiration time and issue time
  * @param jwt a JSON web token
  * @returns true if valid
  */
@@ -18,7 +18,7 @@ export function isTokenValid(jwt: string): boolean {
     const currTime = Math.floor(new Date().getTime() / 1000);
     if (json.iat > currTime + 10 * 60) {
       // +- 10 min
-      setCommuncationError(new Error("Clock out of sync with server"))(
+      setCommunicationError(new Error("Clock out of sync with server"))(
         store.dispatch,
       );
       return false;
@@ -31,7 +31,7 @@ export function isTokenValid(jwt: string): boolean {
 
     return true;
   } catch (err) {
-    /* squelsh */
+    /* squelch */
   }
 
   return false;
@@ -78,9 +78,9 @@ export function isAuthenticated(): boolean {
 }
 
 /**
- * @brief Merges muliple refs to the same Dom node on a React node
+ * @brief Merges multiple refs to the same Dom node on a React node
  * @param refs multipla arguments of ref objects
- * @returns a ref thunk to be used by React durening object creation
+ * @returns a ref thunk to be used by React during object creation
  */
 export const mergeRefs = (...refs: any) => {
   const filteredRefs = refs.filter(Boolean);

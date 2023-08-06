@@ -1,4 +1,4 @@
-.sidemenuWrapper {
+.sideMenuWrapper {
   height: 100vh;
   width: 2rem;
   background-color: #efeef7;
@@ -7,12 +7,12 @@
   flex: 0;
 }
 
-.sidemenuWrapper.show {
+.sideMenuWrapper.show {
   width: 40rem;
   overflow: visible;
 }
 
-.sidemenuHeader {
+.sideMenuHeader {
   font-size: 1.2rem;
   font-weight: bold;
   display: flex;
@@ -22,20 +22,20 @@
   padding: 0.5rem;
   width: 20rem;
 }
-.sidemenuHeader button {
+.sideMenuHeader button {
   font-size: 1rem;
 }
 
-.sidemenuWrapper .menu-item {
+.sideMenuWrapper .menu-item {
   padding: 0.5rem;
 }
 
-.sidemenuContent {
+.sideMenuContent {
   padding: 0.5rem;
   font-size: 0.8rem;
 }
 
-.sidemenuHeader button {
+.sideMenuHeader button {
   border-radius: 50%;
   background-color: #cdc9ec;
   padding: 0.3rem;

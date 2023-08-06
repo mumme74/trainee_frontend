@@ -18,7 +18,7 @@ export const PW_RESET_STATE_CHANGED = "PW_RESET_STATE_CHANGED";
 // communication info
 export const ERROR_COMMUNICATION = "ERROR_COMMUNICATION";
 export const ERROR_COMMUNICATION_CLEAR = "ERROR_COMMUNICATION_CLEAR";
-export const ERROR_AUTENTICATION_EXPIRED = "ERROR_AUTENTICATION_EXPIRED";
+export const ERROR_AUTHENTICATION_EXPIRED = "ERROR_AUTHENTICATION_EXPIRED";
 export const ERROR_CLEAR_ALL = "ERROR_CLEAR_ALL";
 // fired on start of a request, a counter if many requests is live at the same time
 export const COMMUNICATION_CNT = "COMMUNICATION_CNT";
@@ -30,7 +30,7 @@ export const UPDATE_FORM_STATE =
 // dashboard
 export const DASHBOARD_GET_DATA = "DASHBOARD_GET_DATA";
 
-// sidemenu
+// side menu
 export const SIDE_MENU_SET_IS_SHOWN = "SIDE_MENU_SET_IS_SHOWN";
 export const SIDE_MENU_TOGGLE = "SIDE_MENU_TOGGLE";
 

@@ -34,7 +34,7 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <React.Suspense fallback="Ĺoading...">
+        <React.Suspense fallback="Loading...">
           <App>
             <Routes>
               <Route path="/dashboard" element={<Dashboard />} />

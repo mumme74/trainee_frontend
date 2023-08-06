@@ -8,7 +8,7 @@ const validators = {
       value,
     )
       ? ""
-      : "10 chars, atleast: 1 UPPER, 1 lower, 1 special and 1 number";
+      : "10 chars, at least: 1 UPPER, 1 lower, 1 special and 1 number";
   },
 
   required: (value: string) => {

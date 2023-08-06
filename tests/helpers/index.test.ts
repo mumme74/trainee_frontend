@@ -6,11 +6,11 @@ import { store } from "../../src/redux/store";
 import { signJwt, fakeLogin, cleanupAuth } from "../common";
 import { MockConsole } from "../common";
 
-const squelshConsole = true;
+const squelchConsole = true;
 
 let mockConsole: MockConsole;
 beforeAll(()=>{
-  if (squelshConsole)
+  if (squelchConsole)
     mockConsole = new MockConsole();
 });
 

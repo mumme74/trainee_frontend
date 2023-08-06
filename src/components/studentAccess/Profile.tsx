@@ -58,7 +58,7 @@ const Profile: React.FC<StatePropsT & ActionPropsT> = (props) => {
             <Field
               name="userName"
               type="text"
-              caption={t("username")}
+              caption={t("user_name")}
               readonly={true}
               component={FormRow}
             />
@@ -66,14 +66,14 @@ const Profile: React.FC<StatePropsT & ActionPropsT> = (props) => {
               name="firstName"
               type="text"
               readonly={locked}
-              caption={t("firstname")}
+              caption={t("first_name")}
               validate={val.required}
               component={FormRow}
             />
             <Field
               name="lastName"
               type="text"
-              caption={t("lastname")}
+              caption={t("last_name")}
               readonly={locked}
               validate={val.required}
               component={FormRow}

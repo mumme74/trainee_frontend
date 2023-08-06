@@ -87,12 +87,12 @@ const SideMenu: React.FC<
     <nav
       className={
         props.className +
-        " sidemenuWrapper" +
+        " sideMenuWrapper" +
         (props.isShown ? " show" : "") +
         " menu"
       }
     >
-      <div className="sidemenuHeader">
+      <div className="sideMenuHeader">
         <span>{props.caption ? props.caption : t("menu")}</span>
         <button
           className="btn-close btn-small shadow-none"
@@ -100,7 +100,7 @@ const SideMenu: React.FC<
         ></button>
       </div>
       {props.children !== undefined ? (
-        <div className="sidemenuContent">{props.children}</div>
+        <div className="sideMenuContent">{props.children}</div>
       ) : (
         <React.Fragment>
           {myRoles.length > 1 && (

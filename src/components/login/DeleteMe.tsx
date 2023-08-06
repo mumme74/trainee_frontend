@@ -56,7 +56,7 @@ const DeleteMe: React.FC<StatePropsT & JsxPropsT> = (
         setError(res.data.error);
       }
 
-      // it went through, fire a logout dispath in a couple of seconds
+      // it went through, fire a logout dispatch in a couple of seconds
       setTimeout(() => {
         logout()(store.dispatch);
       }, 5000);
@@ -204,7 +204,7 @@ const DeleteMe: React.FC<StatePropsT & JsxPropsT> = (
           }}
           className="btn btn-link"
         >
-          {t("delete_me_stage3_to_startpage")}
+          {t("delete_me_stage3_to_start_page")}
         </button>
       </div>
       </React.Fragment>

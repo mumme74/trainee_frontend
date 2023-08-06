@@ -5,10 +5,10 @@ import {
 describe("Element position", ()=>{
   let elem: HTMLElement;
   beforeAll(()=>{
-    const mockElem = (vlus: {l:number,t:number}) =>{
+    const mockElem = (values: {l:number,t:number}) =>{
       const elem = document.createElement('div');
-      jest.spyOn(elem, 'offsetLeft', 'get').mockReturnValue(vlus.l);
-      jest.spyOn(elem, 'offsetTop', 'get').mockReturnValue(vlus.t);
+      jest.spyOn(elem, 'offsetLeft', 'get').mockReturnValue(values.l);
+      jest.spyOn(elem, 'offsetTop', 'get').mockReturnValue(values.t);
       return elem;
     }
     const e1 = mockElem({l:10,t:15});

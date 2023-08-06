@@ -1,11 +1,11 @@
 import {
   ERROR_COMMUNICATION,
-  ERROR_AUTENTICATION_EXPIRED,
+  ERROR_AUTHENTICATION_EXPIRED,
   ERROR_CLEAR_ALL,
 } from "./action.types";
 import { AppDispatch } from "../store";
 
-export const setCommuncationError = (error: Error | string) => {
+export const setCommunicationError = (error: Error | string) => {
   return (dispatch: AppDispatch) => {
     if (typeof error === "string") error = new Error(error);
 
@@ -27,12 +27,12 @@ export const clearAllErrors = () => {
 
 export const setAuthenticationExpired = () => {
   return (dispatch: AppDispatch) => {
-    dispatch({ type: ERROR_AUTENTICATION_EXPIRED, payload: true });
+    dispatch({ type: ERROR_AUTHENTICATION_EXPIRED, payload: true });
   };
 };
 
 export const clearAuthenticationExpired = () => {
   return (dispatch: AppDispatch) => {
-    dispatch({ type: ERROR_AUTENTICATION_EXPIRED, payload: false });
+    dispatch({ type: ERROR_AUTHENTICATION_EXPIRED, payload: false });
   };
 };

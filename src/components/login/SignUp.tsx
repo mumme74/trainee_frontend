@@ -65,22 +65,22 @@ function SignUp(props: StatePropsT & ActionPropsT) {
           <form onSubmit={handleSubmit} className="container p-2">
             <div className="row">
               <div className="col-sm-2"></div>
-              <h3 className="col-sm">{t("signup_header")}</h3>
-              <p>{t("signup_desc1")}</p>
-              <p>{t("signup_desc2")}</p>
+              <h3 className="col-sm">{t("sign_up_header")}</h3>
+              <p>{t("sign_up_desc1")}</p>
+              <p>{t("sign_up_desc2")}</p>
               <button
                 className="btn btn-secondary"
                 onClick={() => {
                   setLocked(false);
                 }}
               >
-                {t("signup_unlock_fields")}
+                {t("sign_up_unlock_fields")}
               </button>
             </div>
             <Field
               name="userName"
               type="text"
-              caption={t("username")}
+              caption={t("user_name")}
               validate={val.userName}
               disabled={locked}
               component={FormRow}
@@ -88,7 +88,7 @@ function SignUp(props: StatePropsT & ActionPropsT) {
             <Field
               name="firstName"
               type="text"
-              caption={t("firstname")}
+              caption={t("first_name")}
               validate={val.required}
               disabled={locked}
               component={FormRow}
@@ -96,7 +96,7 @@ function SignUp(props: StatePropsT & ActionPropsT) {
             <Field
               name="lastName"
               type="text"
-              caption={t("lastname")}
+              caption={t("last_name")}
               validate={val.required}
               disabled={locked}
               component={FormRow}
@@ -133,7 +133,7 @@ function SignUp(props: StatePropsT & ActionPropsT) {
                   disabled={submitting || locked}
                   className="btn btn-primary"
                 >
-                  {t("signup")}
+                  {t("sign_up")}
                 </button>
                 {props.error.message && (
                   <div className="badge bg-danger m-2">

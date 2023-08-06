@@ -15,7 +15,7 @@ import {
   withAuthGuardTeacher
 } from "../../src/components/HOCs/authGuards";
 
-const squelshConsole = true;
+const squelchConsole = true;
 
 
 let container: HTMLDivElement;
@@ -33,7 +33,7 @@ afterEach(()=>{
 
 let mockConsole: MockConsole;
 beforeAll(()=>{
-  if (squelshConsole)
+  if (squelchConsole)
     mockConsole = new MockConsole();
 });
 
@@ -66,10 +66,10 @@ describe("Test withAuthGuardCommon", ()=>{
 
   afterEach(cleanupAuth);
 
-  it("Should not be authorised", ()=>{
+  it("Should not be authorized", ()=>{
     buildRefs();
     expect(container.textContent)
-      .toBe("unauth_headerunauth_login_firstlogin_here");
+      .toBe("unauthenticated_headerunauthenticated_login_firstlogin_here");
   });
 
   it("Should be authorized, student", ()=>{
@@ -111,8 +111,8 @@ describe("Test withAuthGuardStudent", ()=>{
 
   it("Should not pass no login", ()=>{
     buildRefs();
-    expect(container.textContent).toContain("unauth_login_first");
-    expect(container.textContent).toContain("unauth_req_role_pre student");
+    expect(container.textContent).toContain("unauthenticated_login_first");
+    expect(container.textContent).toContain("unauthenticated_req_role_pre student");
   });
 
   it("Should pass Student", ()=>{
@@ -124,8 +124,8 @@ describe("Test withAuthGuardStudent", ()=>{
   it("Should not pass as Teacher", ()=>{
     fakeLogin(signJwt(100,["teacher"]));
     buildRefs();
-    expect(container.textContent).toContain("unauth_login_first");
-    expect(container.textContent).toContain("unauth_req_role_pre student");
+    expect(container.textContent).toContain("unauthenticated_login_first");
+    expect(container.textContent).toContain("unauthenticated_req_role_pre student");
   });
 
   it("Should pass as Teacher and Student", ()=>{
@@ -137,15 +137,15 @@ describe("Test withAuthGuardStudent", ()=>{
   it("Should not pass as Admin", ()=>{
     fakeLogin(signJwt(100,["admin"]));
     buildRefs();
-    expect(container.textContent).toContain("unauth_login_first");
-    expect(container.textContent).toContain("unauth_req_role_pre student");
+    expect(container.textContent).toContain("unauthenticated_login_first");
+    expect(container.textContent).toContain("unauthenticated_req_role_pre student");
   });
 
   it("Should not pass as super admin", ()=>{
     fakeLogin(signJwt(100,["super"]));
     buildRefs();
-    expect(container.textContent).toContain("unauth_login_first");
-    expect(container.textContent).toContain("unauth_req_role_pre student");
+    expect(container.textContent).toContain("unauthenticated_login_first");
+    expect(container.textContent).toContain("unauthenticated_req_role_pre student");
   });
 
   it("Should pass as when admin and student", ()=>{
@@ -169,8 +169,8 @@ describe("Test withAuthGuardTeacher", ()=>{
 
   it("Should not pass no login", ()=>{
     buildRefs();
-    expect(container.textContent).toContain("unauth_login_first");
-    expect(container.textContent).toContain("unauth_req_role_pre teacher");
+    expect(container.textContent).toContain("unauthenticated_login_first");
+    expect(container.textContent).toContain("unauthenticated_req_role_pre teacher");
   });
 
   it("Should pass Teacher", ()=>{
@@ -182,8 +182,8 @@ describe("Test withAuthGuardTeacher", ()=>{
   it("Should not pass as Teacher", ()=>{
     fakeLogin(signJwt(100,["student"]));
     buildRefs();
-    expect(container.textContent).toContain("unauth_login_first");
-    expect(container.textContent).toContain("unauth_req_role_pre teacher");
+    expect(container.textContent).toContain("unauthenticated_login_first");
+    expect(container.textContent).toContain("unauthenticated_req_role_pre teacher");
   });
 
   it("Should pass as Teacher and Student", ()=>{
@@ -195,15 +195,15 @@ describe("Test withAuthGuardTeacher", ()=>{
   it("Should not pass as Admin", ()=>{
     fakeLogin(signJwt(100,["admin"]));
     buildRefs();
-    expect(container.textContent).toContain("unauth_login_first");
-    expect(container.textContent).toContain("unauth_req_role_pre teacher");
+    expect(container.textContent).toContain("unauthenticated_login_first");
+    expect(container.textContent).toContain("unauthenticated_req_role_pre teacher");
   });
 
   it("Should not pass as super admin", ()=>{
     fakeLogin(signJwt(100,["super"]));
     buildRefs();
-    expect(container.textContent).toContain("unauth_login_first");
-    expect(container.textContent).toContain("unauth_req_role_pre teacher");
+    expect(container.textContent).toContain("unauthenticated_login_first");
+    expect(container.textContent).toContain("unauthenticated_req_role_pre teacher");
   });
 
   it("Should pass as when admin and teacher", ()=>{
@@ -227,8 +227,8 @@ describe("Test withAuthGuardAdmin", ()=>{
 
   it("Should not pass no login", ()=>{
     buildRefs();
-    expect(container.textContent).toContain("unauth_login_first");
-    expect(container.textContent).toContain("unauth_req_role_pre admin");
+    expect(container.textContent).toContain("unauthenticated_login_first");
+    expect(container.textContent).toContain("unauthenticated_req_role_pre admin");
   });
 
   it("Should pass Admin", ()=>{
@@ -240,8 +240,8 @@ describe("Test withAuthGuardAdmin", ()=>{
   it("Should not pass as Teacher", ()=>{
     fakeLogin(signJwt(100,["teacher"]));
     buildRefs();
-    expect(container.textContent).toContain("unauth_login_first");
-    expect(container.textContent).toContain("unauth_req_role_pre admin");
+    expect(container.textContent).toContain("unauthenticated_login_first");
+    expect(container.textContent).toContain("unauthenticated_req_role_pre admin");
   });
 
   it("Should pass as Teacher and admin", ()=>{
@@ -253,15 +253,15 @@ describe("Test withAuthGuardAdmin", ()=>{
   it("Should not pass as Teacher", ()=>{
     fakeLogin(signJwt(100,["teacher"]));
     buildRefs();
-    expect(container.textContent).toContain("unauth_login_first");
-    expect(container.textContent).toContain("unauth_req_role_pre admin");
+    expect(container.textContent).toContain("unauthenticated_login_first");
+    expect(container.textContent).toContain("unauthenticated_req_role_pre admin");
   });
 
   it("Should not pass as super admin", ()=>{
     fakeLogin(signJwt(100,["super"]));
     buildRefs();
-    expect(container.textContent).toContain("unauth_login_first");
-    expect(container.textContent).toContain("unauth_req_role_pre admin");
+    expect(container.textContent).toContain("unauthenticated_login_first");
+    expect(container.textContent).toContain("unauthenticated_req_role_pre admin");
   });
 
   it("Should pass as when admin and teacher", ()=>{
@@ -285,8 +285,8 @@ describe("Test withAuthGuardSuperAdmin", ()=>{
 
   it("Should not pass no login", ()=>{
     buildRefs();
-    expect(container.textContent).toContain("unauth_login_first");
-    expect(container.textContent).toContain("unauth_req_role_pre super");
+    expect(container.textContent).toContain("unauthenticated_login_first");
+    expect(container.textContent).toContain("unauthenticated_req_role_pre super");
   });
 
   it("Should pass SuperAdmin", ()=>{
@@ -298,8 +298,8 @@ describe("Test withAuthGuardSuperAdmin", ()=>{
   it("Should not pass as Super", ()=>{
     fakeLogin(signJwt(100,["admin"]));
     buildRefs();
-    expect(container.textContent).toContain("unauth_login_first");
-    expect(container.textContent).toContain("unauth_req_role_pre super");
+    expect(container.textContent).toContain("unauthenticated_login_first");
+    expect(container.textContent).toContain("unauthenticated_req_role_pre super");
   });
 
   it("Should pass as super and admin", ()=>{
@@ -311,15 +311,15 @@ describe("Test withAuthGuardSuperAdmin", ()=>{
   it("Should not pass as Teacher", ()=>{
     fakeLogin(signJwt(100,["teacher"]));
     buildRefs();
-    expect(container.textContent).toContain("unauth_login_first");
-    expect(container.textContent).toContain("unauth_req_role_pre super");
+    expect(container.textContent).toContain("unauthenticated_login_first");
+    expect(container.textContent).toContain("unauthenticated_req_role_pre super");
   });
 
   it("Should not pass as student", ()=>{
     fakeLogin(signJwt(100,["student"]));
     buildRefs();
-    expect(container.textContent).toContain("unauth_login_first");
-    expect(container.textContent).toContain("unauth_req_role_pre super");
+    expect(container.textContent).toContain("unauthenticated_login_first");
+    expect(container.textContent).toContain("unauthenticated_req_role_pre super");
   });
 
   it("Should pass as when super and teacher", ()=>{

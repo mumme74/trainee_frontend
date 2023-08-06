@@ -8,7 +8,7 @@ export function withAuthGuardCommon(
   roles?: [string],
 ) {
   const MixedComponent = (props: any) => {
-    // if we have roles we must check against them, else we only check that isAhtenticated
+    // if we have roles we must check against them, else we only check that isAuthenticated
     const roleCheck = roles
       ? myUserRoles().find((role) => roles.includes(role))
       : true;

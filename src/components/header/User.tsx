@@ -34,7 +34,7 @@ function User(props: StateProps & JsxProps) {
 
   const { t } = useTranslation("core");
 
-  function toogleMenu() {
+  function toggleMenu() {
     setShowMenu(!showMenu);
   }
 
@@ -88,7 +88,7 @@ function User(props: StateProps & JsxProps) {
             lastName={props.lastName}
             email={props.email}
             picture={props.picture}
-            onClick={toogleMenu}
+            onClick={toggleMenu}
           ></Avatar>
           <DropdownMenu
             show={showMenu}

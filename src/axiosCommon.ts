@@ -5,7 +5,7 @@ import {
   endCommunication,
 } from "./redux/actions/communication.action";
 import {
-  setCommuncationError,
+  setCommunicationError,
   setAuthenticationExpired,
 } from "./redux/actions/error.action";
 
@@ -34,7 +34,7 @@ export function initAxios() {
         setAuthenticationExpired()(store.dispatch);
       }
       const err = error?.response?.data || error;
-      setCommuncationError(err)(store.dispatch);
+      setCommunicationError(err)(store.dispatch);
 
       endCommunication()(store.dispatch);
 

@@ -1,5 +1,5 @@
 /**
- * @brief gets the offsetLeft up to rootnode including
+ * @brief gets the offsetLeft up to rootNode including
  *        possible non static elements in chain
  * @param element the element to search on
  * @returns the true offsetLeft
@@ -16,10 +16,10 @@ export function getElementLeft(element: HTMLElement) {
 }
 
 /**
- * @brief gets the offsetTop up to rootnode including
+ * @brief gets the offsetTop up to rootNode including
  *        possible non static elements in chain
  * @param element the element to search on
- * @returns the true offsettop
+ * @returns the true offsetTop
  */
 export function getElementTop(element: HTMLElement) {
   let current = element, actualTop = 0;

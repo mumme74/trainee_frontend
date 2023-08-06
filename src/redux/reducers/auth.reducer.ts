@@ -34,7 +34,7 @@ export function authReducer(state: IAuth = DEFAULT_STATE, action: AnyAction) {
         token: "",
       };
     case AUTH_SIGN_OUT:
-      console.log("AuthSignout reducer called");
+      console.log("AuthSignOut reducer called");
       return {
         ...state,
         token: "",

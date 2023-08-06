@@ -34,15 +34,15 @@ const ErrorNotifier: React.FC<React.PropsWithChildren<StatePropsT & JsxPropsT>> 
   }
 
   function stopClick(event: any) {
-    let trgt = event.target as Element | null;
-    while (trgt) {
-      if (trgt === menuNodeRef.current || trgt === errorCircle.current) {
+    let target = event.target as Element | null;
+    while (target) {
+      if (target === menuNodeRef.current || target === errorCircle.current) {
         event.stopPropagation();
         event.preventDefault();
         break;
       }
 
-      trgt = trgt.parentNode as Element | null;
+      target = target.parentNode as Element | null;
     }
   }
 
