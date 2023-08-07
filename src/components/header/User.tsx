@@ -49,6 +49,7 @@ function User(props: StateProps & JsxProps) {
       <Dropdown onSelect={changeLang}>
         <Dropdown.Toggle id="dropdown-basic">
           <span className={`flag-icon flag-icon-${currentLang}`}></span>
+          <span>{availableLanguages.find(l=>l.country_code===currentLang)?.name}</span>
         </Dropdown.Toggle>
         <Dropdown.Menu>
           {availableLanguages.map(({ code, name, country_code }) => {
@@ -116,7 +117,7 @@ function User(props: StateProps & JsxProps) {
                 e.stopPropagation();
               }}
             >
-              <span>{t('language')}</span>{langChooser}
+              {langChooser}
             </div>
           </DropdownMenu>
         </React.Fragment>
