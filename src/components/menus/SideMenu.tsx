@@ -5,18 +5,21 @@ import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import { useTranslation } from "react-i18next";
 
-import { AppDispatch, RootState } from "../../redux/store";
+import { AppDispatch, RootState, store } from "../../redux/store";
 import { setSideMenuIsShown } from "../../redux/actions/sideMenu.action";
 import { myUserRoles } from "../../helpers";
 import StudentMenu from "../studentAccess/StudentMenu";
 import TeacherMenu from "../teacherAccess/TeacherMenu";
 import AdminMenu from "../adminAccess/AdminMenu";
 import SuperAdminMenu from "../superAdminAccess/SuperAdminMenu";
+import { eRolesAvailable } from "../../redux/actions/action.types";
 
 import "./SideMenu.css";
+import { selectCurrentRole } from "../../redux/actions/role.action";
 
 type StatePropsT = {
   isShown: boolean;
+  selectedRole: eRolesAvailable;
 };
 type JsxProps = {
   className?: string;
@@ -26,35 +29,25 @@ type ActionPropsT = {
   setSideMenuIsShown: (e: any) => void;
 };
 
-const SideMenu: React.FC<
-  React.PropsWithChildren<StatePropsT & ActionPropsT & JsxProps>
+const SideMenu: React.FC<React.PropsWithChildren<StatePropsT & ActionPropsT & JsxProps>
 > = (props) => {
   const myRoles = myUserRoles();
-  const [curRole, setCurRole] = useState(myRoles[0] || "");
 
   const { t } = useTranslation("core");
-
-  useEffect(() => {
-    if (!myRoles.length) {
-      // just logged out
-      setCurRole("");
-    } else if (curRole === "" && myRoles.length) {
-      // just logged in
-      setCurRole(myRoles[0]);
-    }
-  });
 
   function close() {
     props.setSideMenuIsShown(false);
   }
 
-  function changeRole(role: any) {
-    setCurRole(role);
+  function changeRole(role: string | null) {
+    selectCurrentRole(
+      role as eRolesAvailable || eRolesAvailable.NoRole)(
+        store.dispatch);
     console.log("changed role", role);
   }
 
   function getSelectedMenu() {
-    switch (curRole) {
+    switch (props.selectedRole) {
       case "student":
         return <StudentMenu closeHandler={close} />;
       case "teacher":
@@ -108,7 +101,7 @@ const SideMenu: React.FC<
               <DropdownButton
                 className="m-2"
                 onSelect={changeRole}
-                title={t("role") + ": " + curRole}
+                title={t("role") + ": " + props.selectedRole}
               >
                 {myRoles.map((role) => (
                   <Dropdown.Item eventKey={role} key={role}>
@@ -131,6 +124,7 @@ const SideMenu: React.FC<
 const mapStateToProps = (state: RootState): StatePropsT => {
   return {
     isShown: state.sideMenu.isShown,
+    selectedRole: state.role.selectedRole
   };
 };
 

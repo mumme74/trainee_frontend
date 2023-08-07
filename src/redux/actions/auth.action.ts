@@ -8,12 +8,15 @@ import {
   IAuth,
   IUser,
   ISignUpNewUserForm,
+  ROLE_CURRENTLY_SELECTED,
+  eRolesAvailable,
 } from "./action.types";
 
 import { SERVER_URL } from "../../config/config";
 import { AppDispatch } from "../store";
 
 import { setUserInfo, clearUserInfo } from "./user.action";
+import { myUserRoles } from "../../helpers";
 
 type ServerErrT = {
   error: string;
@@ -93,6 +96,11 @@ export function loginHandler(
     payload: token,
   });
 
+  dispatch({
+    type: ROLE_CURRENTLY_SELECTED,
+    payload: localStorage.getItem('selectedRole') || myUserRoles()[0]
+  })
+
   setUserInfo(responseData.user)(dispatch);
 }
 
@@ -143,6 +151,8 @@ export const logout = () => {
     });
 
     clearUserInfo()(dispatch);
+    dispatch({type: ROLE_CURRENTLY_SELECTED,
+      payload: eRolesAvailable.NoRole});
   };
 };
 

@@ -34,6 +34,10 @@ export const DASHBOARD_GET_DATA = "DASHBOARD_GET_DATA";
 export const SIDE_MENU_SET_IS_SHOWN = "SIDE_MENU_SET_IS_SHOWN";
 export const SIDE_MENU_TOGGLE = "SIDE_MENU_TOGGLE";
 
+// roles
+// this lets the user select another role (if he/she has more than one)
+export const ROLE_CURRENTLY_SELECTED = "ROLE_CURRENTLY_SELECTED";
+
 /**
  * Base interface to identify a user
  */
@@ -111,4 +115,15 @@ export enum ePwResetState {
   PasswordHasChanged, // The password has changed
   // must be last
   ErrorState,  // when a error occurred
+}
+
+/**
+ * The roles available to the system
+ */
+export enum eRolesAvailable {
+  NoRole = "", // when logged out
+  Student = "student",
+  Teacher = "teacher",
+  Admin = "admin",
+  SuperAdmin = "super",
 }

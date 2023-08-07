@@ -7,6 +7,7 @@ import { dashboardReducer } from "./dashboard.reducer";
 import { communicationReducer } from "./communication.reducer";
 import { errorReducer } from "./error.reducer";
 import { pwResetReducer } from "./pwReset.reducer";
+import { roleReducer } from "./role.reducer";
 
 export default combineReducers({
   form: formReducer,
@@ -17,4 +18,5 @@ export default combineReducers({
   communication: communicationReducer,
   error: errorReducer,
   pwReset: pwResetReducer,
+  role: roleReducer,
 });
