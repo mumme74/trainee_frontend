@@ -7,10 +7,8 @@ import SuperAdminDashboard from "./SuperAdminDashboard";
 function SuperAdminIndex() {
   return (
     <Routes>
-      <Route
-        path="/superadmin/dashboard"
-        element={<SuperAdminDashboard />} />
-      <Route path="/superadmin/*"
+      <Route path="dashboard" element={<SuperAdminDashboard />} />
+      <Route path="*"
         element={<SuperAdminIndex />} />
     </Routes>
   );
